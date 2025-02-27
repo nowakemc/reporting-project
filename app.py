@@ -10,6 +10,7 @@ import time
 import json
 import plotly.express as px
 import base64
+from PIL import Image
 
 # Import configuration
 import config
@@ -27,10 +28,19 @@ from modules.folder_analysis import (
 )
 from modules.metadata_analysis import render_metadata_analysis_dashboard
 
+# Get base64 encoded image for favicon
+def get_base64_encoded_image(image_path):
+    """Get base64 encoded image for embedding in HTML"""
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+# Create the favicon
+favicon = get_base64_encoded_image(os.path.join(config.IMAGES_DIR, "logo-48x48.png"))
+
 # Set page configuration
 st.set_page_config(
     page_title=config.APP_TITLE,
-    page_icon=config.APP_ICON,
+    page_icon=f"data:image/png;base64,{favicon}",
     layout=config.PAGE_LAYOUT,
     initial_sidebar_state=config.SIDEBAR_STATE
 )
@@ -98,11 +108,6 @@ def get_database_connection(db_path):
     """Get a cached database connection"""
     return DatabaseManager(db_path)
 
-def get_base64_encoded_image(image_path):
-    """Get base64 encoded image for embedding in HTML"""
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode()
-
 def render_header():
     """Render application header and description"""
     # Display Aparavi logo
@@ -118,7 +123,7 @@ def render_header():
     # Welcome message with Aparavi branding
     st.markdown("""
     <div class="report-header">
-    <p>Welcome to the Aparavi Reporting Dashboard, providing comprehensive analytics and visualization of document management data. 
+    <p>Welcome to the Aparavi Reporting Dashboard, providing comprehensive analytics and visualization of document management data from Aparavi Data Suite. 
     Analyze file types, storage patterns, permissions, and more to gain insights into your document ecosystem.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -169,7 +174,7 @@ def render_sidebar():
         st.markdown(f"""
         **Aparavi Reporting Dashboard**  
         Version 1.1.0  
-        {datetime.now().year} - Aparavi Data Intelligence & Automation
+        {datetime.now().year} - Aparavi Data Suite
         """)
         
     return {

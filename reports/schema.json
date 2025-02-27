@@ -1,0 +1,741 @@
+{
+  "tables": {
+    "classifications": {
+      "columns": [
+        {
+          "name": "classificationId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "nodeObjectId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "classificationKey",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "classificationSet",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "createdAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "classificationId"
+    },
+    "datasets": {
+      "columns": [
+        {
+          "name": "datasetId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "nodeObjectId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "mode",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "createdAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "datasetId"
+    },
+    "encryption": {
+      "columns": [
+        {
+          "name": "encryptionId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "nodeObjectId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "keyId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "token",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "createdAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "encryptionId"
+    },
+    "instances": {
+      "columns": [
+        {
+          "name": "instanceId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "objectId",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "tags",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "messageIds",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "flags",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "batchId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "processTime",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "processPipe",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "size",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "attrib",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "changeKey",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "createTime",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "modifyTime",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "accessTime",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "storeTime",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "storeSize",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "version",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "metadata",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "classificationId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "storeBatchId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "wordBatchId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "vectorBatchId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "encryptionId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "serviceId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "componentId",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "tagSetId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "datasetId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "docModifyTime",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "docModifier",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "docCreateTime",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "docCreator",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "deletedAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "instanceId"
+    },
+    "messages": {
+      "columns": [
+        {
+          "name": "messageId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "messageGuid",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "messageTime",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "message",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "messageId"
+    },
+    "objects": {
+      "columns": [
+        {
+          "name": "objectId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "parentId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "classId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "uniqueName",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "flags",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "tags",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "messageIds",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "permissionId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "nodeObjectId",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "batchId",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "primarySize",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "createdAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "extension",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "uniqueId",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "objectId"
+    },
+    "osPermissions": {
+      "columns": [
+        {
+          "name": "permissionId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "nodeObjectId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "permissionSet",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "createdAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "permissionId"
+    },
+    "osSecurity": {
+      "columns": [
+        {
+          "name": "securityId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "nodeObjectId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "osId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "isLocal",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "isGroup",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "members",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "groups",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "authority",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "securityId"
+    },
+    "parentPaths": {
+      "columns": [
+        {
+          "name": "parentId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "uri",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "parentPath",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "parentId"
+    },
+    "services": {
+      "columns": [
+        {
+          "name": "serviceId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "nodeObjectId",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "key",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "mode",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        },
+        {
+          "name": "parameters",
+          "type": "VARCHAR",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "accessDelay",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "accessRate",
+          "type": "FLOAT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "accessCost",
+          "type": "FLOAT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "storeCost",
+          "type": "FLOAT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "createdAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        },
+        {
+          "name": "deletedAt",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "serviceId"
+    },
+    "tagSets": {
+      "columns": [
+        {
+          "name": "tagSetId",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true
+        },
+        {
+          "name": "tagSet",
+          "type": "VARCHAR",
+          "nullable": false,
+          "primary_key": false
+        }
+      ],
+      "primary_key": "tagSetId"
+    }
+  },
+  "relationships": [
+    {
+      "from_table": "classifications",
+      "to_table": "instances",
+      "from_column": "classificationId",
+      "to_column": "classificationId",
+      "relationship_type": "1:N"
+    },
+    {
+      "from_table": "datasets",
+      "to_table": "instances",
+      "from_column": "datasetId",
+      "to_column": "datasetId",
+      "relationship_type": "1:N"
+    },
+    {
+      "from_table": "encryption",
+      "to_table": "instances",
+      "from_column": "encryptionId",
+      "to_column": "encryptionId",
+      "relationship_type": "1:N"
+    },
+    {
+      "from_table": "objects",
+      "to_table": "instances",
+      "from_column": "objectId",
+      "to_column": "objectId",
+      "relationship_type": "1:N"
+    },
+    {
+      "from_table": "osPermissions",
+      "to_table": "objects",
+      "from_column": "permissionId",
+      "to_column": "permissionId",
+      "relationship_type": "1:N"
+    },
+    {
+      "from_table": "parentPaths",
+      "to_table": "objects",
+      "from_column": "parentId",
+      "to_column": "parentId",
+      "relationship_type": "1:N"
+    },
+    {
+      "from_table": "services",
+      "to_table": "instances",
+      "from_column": "serviceId",
+      "to_column": "serviceId",
+      "relationship_type": "1:N"
+    },
+    {
+      "from_table": "tagSets",
+      "to_table": "instances",
+      "from_column": "tagSetId",
+      "to_column": "tagSetId",
+      "relationship_type": "1:N"
+    }
+  ]
+}

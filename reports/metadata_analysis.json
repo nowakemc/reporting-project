@@ -1,0 +1,2886 @@
+{
+  "analysis": {
+    "txt": {
+      "total_count": 9975,
+      "analyzed_count": 500,
+      "valid_samples": 500,
+      "invalid_samples": 0,
+      "unique_keys": 4,
+      "key_frequencies": {
+        "Content-Encoding": {
+          "count": 394,
+          "percentage": 78.8
+        },
+        "Content-Type": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "dcterms:created": {
+          "count": 3,
+          "percentage": 0.6
+        }
+      }
+    },
+    "pdf": {
+      "total_count": 1416,
+      "analyzed_count": 500,
+      "valid_samples": 500,
+      "invalid_samples": 0,
+      "unique_keys": 157,
+      "key_frequencies": {
+        "pdf:producer": {
+          "count": 480,
+          "percentage": 96.0
+        },
+        "xmpTPg:NPages": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "Content-Type": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "pdf:containsNonEmbeddedFont": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "access_permission:modify_annotations": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "pdf:hasXMP": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "xmp:MetadataDate": {
+          "count": 278,
+          "percentage": 55.60000000000001
+        },
+        "xmpMM:DocumentID": {
+          "count": 325,
+          "percentage": 65.0
+        },
+        "pdf:hasCollection": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "access_permission:fill_in_form": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "xmp:CreatorTool": {
+          "count": 460,
+          "percentage": 92.0
+        },
+        "access_permission:assemble_document": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "dcterms:created": {
+          "count": 484,
+          "percentage": 96.8
+        },
+        "access_permission:can_print": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "pdf:num3DAnnotations": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "access_permission:can_print_degraded": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "access_permission:extract_content": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "access_permission:can_modify": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "pdf:overallPercentageUnmappedUnicodeChars": {
+          "count": 469,
+          "percentage": 93.8
+        },
+        "dc:creator": {
+          "count": 326,
+          "percentage": 65.2
+        },
+        "dc:format": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "pdf:hasXFA": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "pdf:PDFVersion": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "xmp:CreateDate": {
+          "count": 335,
+          "percentage": 67.0
+        },
+        "xmp:ModifyDate": {
+          "count": 334,
+          "percentage": 66.8
+        },
+        "access_permission:extract_for_accessibility": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "dcterms:modified": {
+          "count": 458,
+          "percentage": 91.60000000000001
+        },
+        "pdf:totalUnmappedUnicodeChars": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "pdf:containsDamagedFont": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "pdf:hasMarkedContent": {
+          "count": 500,
+          "percentage": 100.0
+        },
+        "SourceModified": {
+          "count": 76,
+          "percentage": 15.2
+        },
+        "dc:title": {
+          "count": 257,
+          "percentage": 51.4
+        },
+        "dc:language": {
+          "count": 217,
+          "percentage": 43.4
+        },
+        "dc:subject": {
+          "count": 46,
+          "percentage": 9.2
+        },
+        "dc:description": {
+          "count": 34,
+          "percentage": 6.800000000000001
+        },
+        "pdf:annotationSubtypes": {
+          "count": 187,
+          "percentage": 37.4
+        },
+        "FHCPDocument": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "FHCPHIOS ID": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "FHCPStart Date": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "FHCPPlan Code": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "FHCPEnd Date": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "pdf:PDFExtensionVersion": {
+          "count": 8,
+          "percentage": 1.6
+        },
+        "xmp:About": {
+          "count": 15,
+          "percentage": 3.0
+        },
+        "Company": {
+          "count": 58,
+          "percentage": 11.600000000000001
+        },
+        "xmpMM:DerivedFrom:InstanceID": {
+          "count": 41,
+          "percentage": 8.200000000000001
+        },
+        "xmpMM:DerivedFrom:DocumentID": {
+          "count": 41,
+          "percentage": 8.200000000000001
+        },
+        "LastSaved": {
+          "count": 10,
+          "percentage": 2.0
+        },
+        "Created": {
+          "count": 10,
+          "percentage": 2.0
+        },
+        "pdf:hasAcroFormFields": {
+          "count": 46,
+          "percentage": 9.2
+        },
+        "XPressPrivate": {
+          "count": 3,
+          "percentage": 0.6
+        },
+        "MetadataDate": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "robots": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "ElsevierWebPDFSpecifications": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "doi": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "_AuthorEmail": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "_AuthorEmailDisplayName": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "_EmailSubject": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "_AdHocReviewCycleID": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "NCCL_App": {
+          "count": 5,
+          "percentage": 1.0
+        },
+        "pdfuaid:part": {
+          "count": 3,
+          "percentage": 0.6
+        },
+        "NCCL_Status": {
+          "count": 5,
+          "percentage": 1.0
+        },
+        "NCCL_Standard": {
+          "count": 5,
+          "percentage": 1.0
+        },
+        "DocIDContent": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DocID": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "signature:filter": {
+          "count": 3,
+          "percentage": 0.6
+        },
+        "pdf:foundNonAdobeExtensionName": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "signature:date": {
+          "count": 3,
+          "percentage": 0.6
+        },
+        "hasSignature": {
+          "count": 3,
+          "percentage": 0.6
+        },
+        "signature:reason": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "X-TIKA:EXCEPTION:warn": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "NCCL_DocId": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "NCCL_016075-91-73031": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "CUS_DocIDbchkDocbLocation": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "CUS_DocIDOperation": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbchkDocumentName": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbchkMatterNumber": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "ContentTypeId": {
+          "count": 5,
+          "percentage": 1.0
+        },
+        "CUS_DocIDString": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbChkLibDB": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbchkDate": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbchkClientNumber": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDiPage": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbchkDocumentNumber": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbchkAuthorName": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbchkTime": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "CUS_DocIDbchkVersionNumber": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "UpdateNumberKey": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "APTKVER": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "ObjectDetailKey": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "pdfaid:part": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "pdfaid:conformance": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "pdfa:PDFVersion": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "DOCID": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Build": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "xmpMM:History:When": {
+          "count": 6,
+          "percentage": 1.2
+        },
+        "xmpMM:History:Action": {
+          "count": 6,
+          "percentage": 1.2
+        },
+        "xmpMM:History:InstanceID": {
+          "count": 6,
+          "percentage": 1.2
+        },
+        "xmpMM:History:SoftwareAgent": {
+          "count": 6,
+          "percentage": 1.2
+        },
+        "Manual1": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Order": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "ContentType": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "RevisionDate": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "signature:name": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Remediated": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Manager": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "Category": {
+          "count": 2,
+          "percentage": 0.4
+        },
+        "ICNAppName": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "ICNAppPlatform": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "ICNAppVersion": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Comments": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Jive_LatestUserAccountName": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Jive_ModifiedButNotPublished": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Offisync_ServerID": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Offisync_ProviderInitializationData": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Jive_VersionGuid": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Offisync_UniqueId": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "Offisync_UpdateToken": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "GTS_PDFXVersion": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "pdfx:version": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "GTS_PDFXConformance": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "pdfx:conformance": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "pdfxid:version": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_INSERTFOOTER": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "LCLIENT": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_DISPVERSIONINFOOTER": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_DISABLEFOOTERS": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_DISABLETABLEDATAMERGE": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_OPERATOR": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_DISABLEINSERTDOC": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_PROMPTFORVERSION": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_BUILD": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_PRECEDENT": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_DISABLEFORMATTING": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "AFTY_WORDLINK": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_FOOTER1STPAGE": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "LDESC": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_GENERATED": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DEF_DM_DESCRIPTION": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_AUTHOR": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "LMATTER": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_DESCRIPTION": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_YEAR": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_DISPFILENAMEINFOOTER": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_DISABLEINVALIDFIELDS": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_AFTYDOCID": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_PHONEBOOK": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_SCRIPTSESSIONID": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_VERSION": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_VERSION": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_TEMPDOCUMENT": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_CLIENT": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "DM_MATTER": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_DISABLEFORMFIELDS": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_DISABLEPREPARETABLE": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "WORDLINK_DISABLEHEADERS": {
+          "count": 1,
+          "percentage": 0.2
+        },
+        "xmp:Rating": {
+          "count": 1,
+          "percentage": 0.2
+        }
+      }
+    },
+    "eml": {
+      "total_count": 425,
+      "analyzed_count": 425,
+      "valid_samples": 425,
+      "invalid_samples": 0,
+      "unique_keys": 13,
+      "key_frequencies": {
+        "Message-To": {
+          "count": 425,
+          "percentage": 100.0
+        },
+        "dc:creator": {
+          "count": 423,
+          "percentage": 99.52941176470588
+        },
+        "Multipart-Boundary": {
+          "count": 110,
+          "percentage": 25.882352941176475
+        },
+        "Multipart-Subtype": {
+          "count": 110,
+          "percentage": 25.882352941176475
+        },
+        "dcterms:created": {
+          "count": 425,
+          "percentage": 100.0
+        },
+        "Message-From": {
+          "count": 423,
+          "percentage": 99.52941176470588
+        },
+        "Content-Type": {
+          "count": 425,
+          "percentage": 100.0
+        },
+        "Message:From-Name": {
+          "count": 421,
+          "percentage": 99.05882352941177
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 425,
+          "percentage": 100.0
+        },
+        "dc:title": {
+          "count": 424,
+          "percentage": 99.76470588235294
+        },
+        "Message:From-Email": {
+          "count": 423,
+          "percentage": 99.52941176470588
+        },
+        "dc:subject": {
+          "count": 424,
+          "percentage": 99.76470588235294
+        },
+        "Message-Cc": {
+          "count": 4,
+          "percentage": 0.9411764705882352
+        }
+      }
+    },
+    "js": {
+      "total_count": 333,
+      "analyzed_count": 333,
+      "valid_samples": 333,
+      "invalid_samples": 0,
+      "unique_keys": 3,
+      "key_frequencies": {
+        "Content-Encoding": {
+          "count": 333,
+          "percentage": 100.0
+        },
+        "Content-Type": {
+          "count": 333,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 333,
+          "percentage": 100.0
+        }
+      }
+    },
+    "docx": {
+      "total_count": 135,
+      "analyzed_count": 135,
+      "valid_samples": 135,
+      "invalid_samples": 0,
+      "unique_keys": 94,
+      "key_frequencies": {
+        "custom:Creator": {
+          "count": 27,
+          "percentage": 20.0
+        },
+        "dcterms:created": {
+          "count": 121,
+          "percentage": 89.62962962962962
+        },
+        "Content-Type": {
+          "count": 135,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 135,
+          "percentage": 100.0
+        },
+        "dcterms:modified": {
+          "count": 121,
+          "percentage": 89.62962962962962
+        },
+        "dc:title": {
+          "count": 66,
+          "percentage": 48.888888888888886
+        },
+        "custom:LastSaved": {
+          "count": 30,
+          "percentage": 22.22222222222222
+        },
+        "custom:Created": {
+          "count": 30,
+          "percentage": 22.22222222222222
+        },
+        "cp:revision": {
+          "count": 97,
+          "percentage": 71.85185185185186
+        },
+        "dc:language": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "dc:modifier": {
+          "count": 92,
+          "percentage": 68.14814814814815
+        },
+        "dc:creator": {
+          "count": 106,
+          "percentage": 78.51851851851852
+        },
+        "xmpTPg:NPages": {
+          "count": 96,
+          "percentage": 71.11111111111111
+        },
+        "dc:publisher": {
+          "count": 69,
+          "percentage": 51.11111111111111
+        },
+        "dc:subject": {
+          "count": 22,
+          "percentage": 16.296296296296298
+        },
+        "custom:_TemplateID": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:ContentTypeId": {
+          "count": 17,
+          "percentage": 12.592592592592592
+        },
+        "custom:DSDBI ClassificationCLASSIFICATION": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:DSDBI ClassificationDLM FOR SEC-MARKINGS": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:Classification": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:Date completed": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:TitusGUID": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:Editor": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:Order": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:_dlc_DocIdItemGuid": {
+          "count": 5,
+          "percentage": 3.7037037037037033
+        },
+        "custom:xd_Signature": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:VersionNumber": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDOperation": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:DocNumber": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:ClientNumber": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbchkMatterNumber": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:LibraryName": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:DocName": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbchkAuthorName": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "cp:version": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDString": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbChkLibDB": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbchkClientNumber": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbchkDocumentName": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbchkVersionNumber": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbchkTime": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:AuthorName": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDiPage": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:MatterNumber": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbchkDate": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDbchkDocumentNumber": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:CUS_DocIDchkNativeAuthor": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:BusinessServices": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:TaxKeyword": {
+          "count": 4,
+          "percentage": 2.9629629629629632
+        },
+        "custom:_dlc_DocId": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:_dlc_DocIdUrl": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:Change in Title": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:_DocHome": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:PM Type": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:ContentType": {
+          "count": 3,
+          "percentage": 2.2222222222222223
+        },
+        "custom:Status": {
+          "count": 3,
+          "percentage": 2.2222222222222223
+        },
+        "custom:Posting Date": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:Author0": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:PPG Type": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:Comments0": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:Revision Date": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:Version Number": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:Topic Letter": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:For?": {
+          "count": 2,
+          "percentage": 1.4814814814814816
+        },
+        "custom:RecordPoint_ActiveItemUniqueId": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:DEECD_Author": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:RecordPoint_ActiveItemWebId": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:RecordPoint_WorkflowType": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:RecordPoint_SubmissionCompleted": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:DET_EDRMS_RCS": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:RecordPoint_ActiveItemListId": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:RecordPoint_ActiveItemSiteId": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "cp:category": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:RecordPoint_RecordNumberSubmitted": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:DEECD_ItemType": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:Language": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:Copyright": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:EMAIL_OWNER_ADDRESS": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:MAIL_MSG_ID2": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:RESPONSE_SENDER_NAME": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:MAIL_MSG_ID1": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:bjSaver": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:EmailFrom": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:display_urn:schemas-microsoft-com:office:office#Manager_x0020_Contact": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:EmailTo": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:display_urn:schemas-microsoft-com:office:office#Editor": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:display_urn:schemas-microsoft-com:office:office#Author": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:EmailSender": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:bjDocumentLabelXML-0": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:bjDocumentSecurityLabel": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:bjDocumentLabelXML": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:docIndexRef": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "custom:Further Consideration": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        },
+        "dc:description": {
+          "count": 1,
+          "percentage": 0.7407407407407408
+        }
+      }
+    },
+    "spcolor": {
+      "total_count": 96,
+      "analyzed_count": 96,
+      "valid_samples": 96,
+      "invalid_samples": 0,
+      "unique_keys": 2,
+      "key_frequencies": {
+        "Content-Type": {
+          "count": 96,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 96,
+          "percentage": 100.0
+        }
+      }
+    },
+    "doc": {
+      "total_count": 47,
+      "analyzed_count": 47,
+      "valid_samples": 47,
+      "invalid_samples": 0,
+      "unique_keys": 32,
+      "key_frequencies": {
+        "dc:creator": {
+          "count": 46,
+          "percentage": 97.87234042553192
+        },
+        "dcterms:created": {
+          "count": 47,
+          "percentage": 100.0
+        },
+        "xmpTPg:NPages": {
+          "count": 47,
+          "percentage": 100.0
+        },
+        "Content-Type": {
+          "count": 47,
+          "percentage": 100.0
+        },
+        "cp:revision": {
+          "count": 47,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 47,
+          "percentage": 100.0
+        },
+        "dcterms:modified": {
+          "count": 47,
+          "percentage": 100.0
+        },
+        "dc:title": {
+          "count": 39,
+          "percentage": 82.97872340425532
+        },
+        "dc:modifier": {
+          "count": 46,
+          "percentage": 97.87234042553192
+        },
+        "X-TIKA:origResourceName": {
+          "count": 6,
+          "percentage": 12.76595744680851
+        },
+        "custom:Creator": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:LastSaved": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:Created": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "dc:publisher": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:_AdHocReviewCycleID": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:_EmailSubject": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:_AuthorEmail": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:_AuthorEmailDisplayName": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:Security": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "cp:category": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:UN Language": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "custom:Record Type": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "custom:Linked To Page": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "custom:Date": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "dc:subject": {
+          "count": 3,
+          "percentage": 6.382978723404255
+        },
+        "custom:_TemplateID": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "custom:_CheckOutSrcUrl": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "custom:ContentType": {
+          "count": 2,
+          "percentage": 4.25531914893617
+        },
+        "custom:_PreviousAdHocReviewCycleID": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "w:Comments": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "custom:ContentTypeId": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        },
+        "custom:_Author": {
+          "count": 1,
+          "percentage": 2.127659574468085
+        }
+      }
+    },
+    "xml": {
+      "total_count": 39,
+      "analyzed_count": 39,
+      "valid_samples": 39,
+      "invalid_samples": 0,
+      "unique_keys": 9,
+      "key_frequencies": {
+        "Content-Type": {
+          "count": 39,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 39,
+          "percentage": 100.0
+        },
+        "dc:creator": {
+          "count": 2,
+          "percentage": 5.128205128205128
+        },
+        "dcterms:created": {
+          "count": 2,
+          "percentage": 5.128205128205128
+        },
+        "cp:version": {
+          "count": 1,
+          "percentage": 2.564102564102564
+        },
+        "cp:revision": {
+          "count": 2,
+          "percentage": 5.128205128205128
+        },
+        "dc:title": {
+          "count": 2,
+          "percentage": 5.128205128205128
+        },
+        "dc:modifier": {
+          "count": 2,
+          "percentage": 5.128205128205128
+        },
+        "dcterms:modified": {
+          "count": 1,
+          "percentage": 2.564102564102564
+        }
+      }
+    },
+    "xlsx": {
+      "total_count": 37,
+      "analyzed_count": 37,
+      "valid_samples": 37,
+      "invalid_samples": 0,
+      "unique_keys": 55,
+      "key_frequencies": {
+        "Security": {
+          "count": 29,
+          "percentage": 78.37837837837837
+        },
+        "Version": {
+          "count": 30,
+          "percentage": 81.08108108108108
+        },
+        "dcterms:created": {
+          "count": 30,
+          "percentage": 81.08108108108108
+        },
+        "SharedDoc": {
+          "count": 29,
+          "percentage": 78.37837837837837
+        },
+        "HyperlinksChanged": {
+          "count": 29,
+          "percentage": 78.37837837837837
+        },
+        "Content-Type": {
+          "count": 30,
+          "percentage": 81.08108108108108
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 37,
+          "percentage": 100.0
+        },
+        "LinksUpToDate": {
+          "count": 29,
+          "percentage": 78.37837837837837
+        },
+        "dcterms:modified": {
+          "count": 30,
+          "percentage": 81.08108108108108
+        },
+        "protected": {
+          "count": 37,
+          "percentage": 100.0
+        },
+        "ScaleCrop": {
+          "count": 29,
+          "percentage": 78.37837837837837
+        },
+        "TotalEditingTime": {
+          "count": 7,
+          "percentage": 18.91891891891892
+        },
+        "ReportName": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "LastPrinted": {
+          "count": 15,
+          "percentage": 40.54054054054054
+        },
+        "dc:modifier": {
+          "count": 25,
+          "percentage": 67.56756756756756
+        },
+        "PeriodId": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "DocumentNo": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "functions": {
+          "count": 17,
+          "percentage": 45.94594594594595
+        },
+        "PeriodName": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "numberOfBaseFunctionsPerFormula": {
+          "count": 18,
+          "percentage": 48.64864864864865
+        },
+        "ReportId": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "Subject": {
+          "count": 6,
+          "percentage": 16.216216216216218
+        },
+        "ChapterName": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "dc:creator": {
+          "count": 25,
+          "percentage": 67.56756756756756
+        },
+        "isLinkedAndViewmode": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "numberOfLinksPerFormula": {
+          "count": 18,
+          "percentage": 48.64864864864865
+        },
+        "Company": {
+          "count": 19,
+          "percentage": 51.35135135135135
+        },
+        "ChapterId": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "references": {
+          "count": 7,
+          "percentage": 18.91891891891892
+        },
+        "_TemplateID": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "Source": {
+          "count": 1,
+          "percentage": 2.7027027027027026
+        },
+        "Comments": {
+          "count": 2,
+          "percentage": 5.405405405405405
+        },
+        "formulasLongerThan50": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "sheetsWithFormulasLongerThan50AndHave3baseFunctions": {
+          "count": 1,
+          "percentage": 2.7027027027027026
+        },
+        "Title": {
+          "count": 5,
+          "percentage": 13.513513513513514
+        },
+        "Copyright": {
+          "count": 2,
+          "percentage": 5.405405405405405
+        },
+        "Category": {
+          "count": 2,
+          "percentage": 5.405405405405405
+        },
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Application": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Extended_MSFT_Method": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Name": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "SV_HIDDEN_GRID_QUERY_LIST_4F35BF76-6C0D-4D9B-82B2-816C12CF3733": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Enabled": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_SetDate": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Owner": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "Sensitivity": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_ActionId": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_SiteId": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "SV_QUERY_LIST_4F35BF76-6C0D-4D9B-82B2-816C12CF3733": {
+          "count": 4,
+          "percentage": 10.81081081081081
+        },
+        "ContentTypeId": {
+          "count": 1,
+          "percentage": 2.7027027027027026
+        },
+        "Classification": {
+          "count": 1,
+          "percentage": 2.7027027027027026
+        },
+        "DSDBI ClassificationCLASSIFICATION": {
+          "count": 1,
+          "percentage": 2.7027027027027026
+        },
+        "Keywords": {
+          "count": 3,
+          "percentage": 8.108108108108109
+        },
+        "DSDBI ClassificationDLM FOR SEC-MARKINGS": {
+          "count": 1,
+          "percentage": 2.7027027027027026
+        },
+        "TitusGUID": {
+          "count": 1,
+          "percentage": 2.7027027027027026
+        },
+        "RevisionNumber": {
+          "count": 2,
+          "percentage": 5.405405405405405
+        }
+      }
+    },
+    "webpart": {
+      "total_count": 30,
+      "analyzed_count": 30,
+      "valid_samples": 30,
+      "invalid_samples": 0,
+      "unique_keys": 2,
+      "key_frequencies": {
+        "Content-Type": {
+          "count": 30,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 30,
+          "percentage": 100.0
+        }
+      }
+    },
+    "pptx": {
+      "total_count": 26,
+      "analyzed_count": 26,
+      "valid_samples": 26,
+      "invalid_samples": 0,
+      "unique_keys": 15,
+      "key_frequencies": {
+        "custom:Creator": {
+          "count": 24,
+          "percentage": 92.3076923076923
+        },
+        "dcterms:created": {
+          "count": 26,
+          "percentage": 100.0
+        },
+        "Content-Type": {
+          "count": 26,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 26,
+          "percentage": 100.0
+        },
+        "dcterms:modified": {
+          "count": 26,
+          "percentage": 100.0
+        },
+        "dc:title": {
+          "count": 11,
+          "percentage": 42.30769230769231
+        },
+        "custom:LastSaved": {
+          "count": 25,
+          "percentage": 96.15384615384616
+        },
+        "custom:Created": {
+          "count": 24,
+          "percentage": 92.3076923076923
+        },
+        "dc:creator": {
+          "count": 12,
+          "percentage": 46.15384615384615
+        },
+        "custom:TemplateCategory": {
+          "count": 1,
+          "percentage": 3.8461538461538463
+        },
+        "dc:modifier": {
+          "count": 1,
+          "percentage": 3.8461538461538463
+        },
+        "xmpTPg:NPages": {
+          "count": 1,
+          "percentage": 3.8461538461538463
+        },
+        "custom:ContentTypeId": {
+          "count": 1,
+          "percentage": 3.8461538461538463
+        },
+        "cp:revision": {
+          "count": 1,
+          "percentage": 3.8461538461538463
+        },
+        "custom:Division": {
+          "count": 1,
+          "percentage": 3.8461538461538463
+        }
+      }
+    },
+    "htm": {
+      "total_count": 25,
+      "analyzed_count": 25,
+      "valid_samples": 25,
+      "invalid_samples": 0,
+      "unique_keys": 80,
+      "key_frequencies": {
+        "fb:app_id": {
+          "count": 4,
+          "percentage": 16.0
+        },
+        "ROBOTS": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "og:image": {
+          "count": 7,
+          "percentage": 28.000000000000004
+        },
+        "Content-Type": {
+          "count": 25,
+          "percentage": 100.0
+        },
+        "Content-Encoding": {
+          "count": 25,
+          "percentage": 100.0
+        },
+        "sniply-options": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "viewport": {
+          "count": 20,
+          "percentage": 80.0
+        },
+        "format-detection": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "dc:title": {
+          "count": 25,
+          "percentage": 100.0
+        },
+        "dc:subject": {
+          "count": 8,
+          "percentage": 32.0
+        },
+        "dc:description": {
+          "count": 16,
+          "percentage": 64.0
+        },
+        "twitter:description": {
+          "count": 8,
+          "percentage": 32.0
+        },
+        "Content-Type-Hint": {
+          "count": 12,
+          "percentage": 48.0
+        },
+        "og:title": {
+          "count": 15,
+          "percentage": 60.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 25,
+          "percentage": 100.0
+        },
+        "twitter:image": {
+          "count": 4,
+          "percentage": 16.0
+        },
+        "X-UA-Compatible": {
+          "count": 8,
+          "percentage": 32.0
+        },
+        "twitter:title": {
+          "count": 8,
+          "percentage": 32.0
+        },
+        "description": {
+          "count": 12,
+          "percentage": 48.0
+        },
+        "keywords": {
+          "count": 5,
+          "percentage": 20.0
+        },
+        "twitter:card": {
+          "count": 9,
+          "percentage": 36.0
+        },
+        "title": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "Content-Language": {
+          "count": 21,
+          "percentage": 84.0
+        },
+        "og:description": {
+          "count": 14,
+          "percentage": 56.00000000000001
+        },
+        "google-site-verification": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "author": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "dc:creator": {
+          "count": 3,
+          "percentage": 12.0
+        },
+        "generator": {
+          "count": 5,
+          "percentage": 20.0
+        },
+        "og:url": {
+          "count": 12,
+          "percentage": 48.0
+        },
+        "twitter:creator": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "x-ua-compatible": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "theme-color": {
+          "count": 4,
+          "percentage": 16.0
+        },
+        "og:type": {
+          "count": 8,
+          "percentage": 32.0
+        },
+        "og:image:width": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "og:image:height": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "Updated Date": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "msapplication-square70x70logo": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "msapplication-TileImage": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "country": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "msapplication-config": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "msapplication-TileColor": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "Language": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "msapplication-square150x150logo": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "countryid": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "Keywords": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "Description": {
+          "count": 4,
+          "percentage": 16.0
+        },
+        "altpages": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "siteid": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "Title": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "robots": {
+          "count": 4,
+          "percentage": 16.0
+        },
+        "pragma": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "expires": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "cache-control": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "og:locale": {
+          "count": 4,
+          "percentage": 16.0
+        },
+        "og:site_name": {
+          "count": 4,
+          "percentage": 16.0
+        },
+        "twitter:site": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "article:publisher": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "og:image:secure_url": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "CmsPageId": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "msvalidate.01": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "copyright": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "publishDate": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "entity_id": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "serp-content-type": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "translated": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "pageCreatedAt": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "KeyWords": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "GENERATOR": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "AUTHOR": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "og:image:type": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "twitter:url": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "og:updated_time": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "article:modified_time": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "article:published_time": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "Content-Location": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "refresh": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "referrer": {
+          "count": 2,
+          "percentage": 8.0
+        },
+        "MobileOptimized": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "Generator": {
+          "count": 1,
+          "percentage": 4.0
+        },
+        "HandheldFriendly": {
+          "count": 1,
+          "percentage": 4.0
+        }
+      }
+    },
+    "spfont": {
+      "total_count": 24,
+      "analyzed_count": 24,
+      "valid_samples": 24,
+      "invalid_samples": 0,
+      "unique_keys": 2,
+      "key_frequencies": {
+        "Content-Type": {
+          "count": 24,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 24,
+          "percentage": 100.0
+        }
+      }
+    },
+    "dwp": {
+      "total_count": 23,
+      "analyzed_count": 23,
+      "valid_samples": 23,
+      "invalid_samples": 0,
+      "unique_keys": 2,
+      "key_frequencies": {
+        "Content-Type": {
+          "count": 23,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 23,
+          "percentage": 100.0
+        }
+      }
+    },
+    "xls": {
+      "total_count": 17,
+      "analyzed_count": 17,
+      "valid_samples": 17,
+      "invalid_samples": 0,
+      "unique_keys": 35,
+      "key_frequencies": {
+        "Security": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "dc:creator": {
+          "count": 8,
+          "percentage": 47.05882352941176
+        },
+        "Version": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "dcterms:created": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "SharedDoc": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "HyperlinksChanged": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "Content-Type": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "Company": {
+          "count": 14,
+          "percentage": 82.35294117647058
+        },
+        "numberOfLinksPerFormula": {
+          "count": 10,
+          "percentage": 58.82352941176471
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "LinksUpToDate": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "dcterms:modified": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "protected": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "functions": {
+          "count": 10,
+          "percentage": 58.82352941176471
+        },
+        "ScaleCrop": {
+          "count": 17,
+          "percentage": 100.0
+        },
+        "dc:modifier": {
+          "count": 16,
+          "percentage": 94.11764705882352
+        },
+        "numberOfBaseFunctionsPerFormula": {
+          "count": 10,
+          "percentage": 58.82352941176471
+        },
+        "_AuthorEmail": {
+          "count": 2,
+          "percentage": 11.76470588235294
+        },
+        "_AuthorEmailDisplayName": {
+          "count": 2,
+          "percentage": 11.76470588235294
+        },
+        "_EmailSubject": {
+          "count": 2,
+          "percentage": 11.76470588235294
+        },
+        "LastPrinted": {
+          "count": 10,
+          "percentage": 58.82352941176471
+        },
+        "_AdHocReviewCycleID": {
+          "count": 2,
+          "percentage": 11.76470588235294
+        },
+        "_PreviousAdHocReviewCycleID": {
+          "count": 2,
+          "percentage": 11.76470588235294
+        },
+        "formulasLongerThan50": {
+          "count": 4,
+          "percentage": 23.52941176470588
+        },
+        "sheetsWithFormulasLongerThan50AndHave3baseFunctions": {
+          "count": 2,
+          "percentage": 11.76470588235294
+        },
+        "Subject": {
+          "count": 8,
+          "percentage": 47.05882352941176
+        },
+        "Title": {
+          "count": 7,
+          "percentage": 41.17647058823529
+        },
+        "_PID_HLINKS": {
+          "count": 5,
+          "percentage": 29.411764705882355
+        },
+        "_TemplateID": {
+          "count": 3,
+          "percentage": 17.647058823529413
+        },
+        "containVBA": {
+          "count": 2,
+          "percentage": 11.76470588235294
+        },
+        "references": {
+          "count": 2,
+          "percentage": 11.76470588235294
+        },
+        "Comments": {
+          "count": 1,
+          "percentage": 5.88235294117647
+        },
+        "Category": {
+          "count": 1,
+          "percentage": 5.88235294117647
+        },
+        "Keywords": {
+          "count": 1,
+          "percentage": 5.88235294117647
+        },
+        "formulasLongerThan100": {
+          "count": 1,
+          "percentage": 5.88235294117647
+        }
+      }
+    },
+    "master": {
+      "total_count": 12,
+      "analyzed_count": 12,
+      "valid_samples": 12,
+      "invalid_samples": 0,
+      "unique_keys": 9,
+      "key_frequencies": {
+        "Content-Encoding": {
+          "count": 12,
+          "percentage": 100.0
+        },
+        "Content-Type": {
+          "count": 12,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 12,
+          "percentage": 100.0
+        },
+        "Content-Type-Hint": {
+          "count": 6,
+          "percentage": 50.0
+        },
+        "Content-Language": {
+          "count": 6,
+          "percentage": 50.0
+        },
+        "GENERATOR": {
+          "count": 6,
+          "percentage": 50.0
+        },
+        "Expires": {
+          "count": 6,
+          "percentage": 50.0
+        },
+        "X-UA-Compatible": {
+          "count": 3,
+          "percentage": 25.0
+        },
+        "progid": {
+          "count": 6,
+          "percentage": 50.0
+        }
+      }
+    },
+    "html": {
+      "total_count": 7,
+      "analyzed_count": 7,
+      "valid_samples": 7,
+      "invalid_samples": 0,
+      "unique_keys": 39,
+      "key_frequencies": {
+        "msapplication-TileImage": {
+          "count": 3,
+          "percentage": 42.857142857142854
+        },
+        "Content-Type": {
+          "count": 7,
+          "percentage": 100.0
+        },
+        "og:locale": {
+          "count": 4,
+          "percentage": 57.14285714285714
+        },
+        "Content-Encoding": {
+          "count": 7,
+          "percentage": 100.0
+        },
+        "og:site_name": {
+          "count": 4,
+          "percentage": 57.14285714285714
+        },
+        "bingbot": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "viewport": {
+          "count": 6,
+          "percentage": 85.71428571428571
+        },
+        "dc:title": {
+          "count": 7,
+          "percentage": 100.0
+        },
+        "og:title": {
+          "count": 5,
+          "percentage": 71.42857142857143
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 7,
+          "percentage": 100.0
+        },
+        "X-UA-Compatible": {
+          "count": 4,
+          "percentage": 57.14285714285714
+        },
+        "article:modified_time": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "googlebot": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "og:type": {
+          "count": 4,
+          "percentage": 57.14285714285714
+        },
+        "generator": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "og:url": {
+          "count": 5,
+          "percentage": 71.42857142857143
+        },
+        "twitter:card": {
+          "count": 4,
+          "percentage": 57.14285714285714
+        },
+        "Content-Language": {
+          "count": 5,
+          "percentage": 71.42857142857143
+        },
+        "robots": {
+          "count": 4,
+          "percentage": 57.14285714285714
+        },
+        "og:image": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "og:image:height": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "programs": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "dc:subject": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "dc:description": {
+          "count": 3,
+          "percentage": 42.857142857142854
+        },
+        "Content-Type-Hint": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "has_audio": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "og:image:width": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "nid": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "description": {
+          "count": 3,
+          "percentage": 42.857142857142854
+        },
+        "keywords": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "twitter:url": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "msapplication-TileColor": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "twitter:creator": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "twitter:title": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "twitter:site": {
+          "count": 2,
+          "percentage": 28.57142857142857
+        },
+        "x-ua-compatible": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "google-site-verification": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "csrf-token": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        },
+        "csrf-param": {
+          "count": 1,
+          "percentage": 14.285714285714285
+        }
+      }
+    },
+    "preview": {
+      "total_count": 6,
+      "analyzed_count": 6,
+      "valid_samples": 6,
+      "invalid_samples": 0,
+      "unique_keys": 3,
+      "key_frequencies": {
+        "Content-Encoding": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "Content-Type": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 6,
+          "percentage": 100.0
+        }
+      }
+    },
+    "PDF": {
+      "total_count": 6,
+      "analyzed_count": 6,
+      "valid_samples": 6,
+      "invalid_samples": 0,
+      "unique_keys": 38,
+      "key_frequencies": {
+        "pdf:producer": {
+          "count": 4,
+          "percentage": 66.66666666666666
+        },
+        "xmpTPg:NPages": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "Content-Type": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "pdf:containsNonEmbeddedFont": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "access_permission:modify_annotations": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "pdf:hasXMP": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "xmp:MetadataDate": {
+          "count": 4,
+          "percentage": 66.66666666666666
+        },
+        "xmpMM:DocumentID": {
+          "count": 4,
+          "percentage": 66.66666666666666
+        },
+        "pdf:hasCollection": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "access_permission:fill_in_form": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "xmp:CreatorTool": {
+          "count": 4,
+          "percentage": 66.66666666666666
+        },
+        "access_permission:assemble_document": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "dcterms:created": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "access_permission:can_print": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "pdf:num3DAnnotations": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "X-TIKA:Parsed-By-Full-Set": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "access_permission:can_print_degraded": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "access_permission:extract_content": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "access_permission:can_modify": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "dc:format": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "pdf:PDFVersion": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "pdf:hasXFA": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "xmp:CreateDate": {
+          "count": 5,
+          "percentage": 83.33333333333334
+        },
+        "xmp:ModifyDate": {
+          "count": 5,
+          "percentage": 83.33333333333334
+        },
+        "access_permission:extract_for_accessibility": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "dcterms:modified": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "pdf:totalUnmappedUnicodeChars": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "pdf:containsDamagedFont": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "pdf:hasMarkedContent": {
+          "count": 6,
+          "percentage": 100.0
+        },
+        "_DocHome": {
+          "count": 1,
+          "percentage": 16.666666666666664
+        },
+        "SourceModified": {
+          "count": 1,
+          "percentage": 16.666666666666664
+        },
+        "pdf:overallPercentageUnmappedUnicodeChars": {
+          "count": 5,
+          "percentage": 83.33333333333334
+        },
+        "dc:creator": {
+          "count": 2,
+          "percentage": 33.33333333333333
+        },
+        "Company": {
+          "count": 1,
+          "percentage": 16.666666666666664
+        },
+        "pdf:hasAcroFormFields": {
+          "count": 1,
+          "percentage": 16.666666666666664
+        },
+        "pdf:annotationSubtypes": {
+          "count": 1,
+          "percentage": 16.666666666666664
+        },
+        "dc:title": {
+          "count": 2,
+          "percentage": 33.33333333333333
+        },
+        "dc:language": {
+          "count": 1,
+          "percentage": 16.666666666666664
+        }
+      }
+    }
+  },
+  "field_analysis": {
+    "common_fields": {
+      "dcterms:created": {
+        "count": 10,
+        "percentage": 52.63157894736842
+      },
+      "X-TIKA:Parsed-By-Full-Set": {
+        "count": 19,
+        "percentage": 100.0
+      },
+      "Content-Type": {
+        "count": 19,
+        "percentage": 100.0
+      },
+      "dc:creator": {
+        "count": 10,
+        "percentage": 52.63157894736842
+      }
+    },
+    "unique_fields": {
+      "pdf": [
+        "FHCPHIOS ID",
+        "CUS_DocIDbchkDocbLocation",
+        "pdf:PDFExtensionVersion",
+        "WORDLINK_DISABLETABLEDATAMERGE",
+        "xmp:About",
+        "WORDLINK_DISABLEINSERTDOC",
+        "pdfx:version",
+        "DM_PRECEDENT",
+        "CUS_DocIDbchkMatterNumber",
+        "LDESC",
+        "WORDLINK_GENERATED",
+        "pdfaid:part",
+        "DM_AUTHOR",
+        "pdfx:conformance",
+        "DM_DESCRIPTION",
+        "DM_DISPFILENAMEINFOOTER",
+        "DM_VERSION",
+        "WORDLINK_TEMPDOCUMENT",
+        "CUS_DocIDbChkLibDB",
+        "Build",
+        "CUS_DocIDbchkClientNumber",
+        "Created",
+        "NCCL_016075-91-73031",
+        "xmpMM:History:SoftwareAgent",
+        "FHCPPlan Code",
+        "WORDLINK_DISABLEFORMFIELDS",
+        "WORDLINK_DISABLEPREPARETABLE",
+        "FHCPEnd Date",
+        "DocIDContent",
+        "xmpMM:History:When",
+        "NCCL_App",
+        "signature:filter",
+        "CUS_DocIDOperation",
+        "UpdateNumberKey",
+        "pdf:foundNonAdobeExtensionName",
+        "LCLIENT",
+        "WORDLINK_DISABLEFOOTERS",
+        "signature:date",
+        "XPressPrivate",
+        "FHCPStart Date",
+        "xmp:Rating",
+        "Order",
+        "Jive_ModifiedButNotPublished",
+        "xmpMM:DerivedFrom:InstanceID",
+        "WORDLINK_DISABLEINVALIDFIELDS",
+        "WORDLINK_SCRIPTSESSIONID",
+        "Remediated",
+        "WORDLINK_VERSION",
+        "xmpMM:DerivedFrom:DocumentID",
+        "RevisionDate",
+        "NCCL_Standard",
+        "CUS_DocIDbchkDate",
+        "CUS_DocIDbchkAuthorName",
+        "CUS_DocIDbchkTime",
+        "Offisync_UniqueId",
+        "DOCID",
+        "MetadataDate",
+        "WORDLINK_DISABLEHEADERS",
+        "pdfa:PDFVersion",
+        "FHCPDocument",
+        "DM_DISPVERSIONINFOOTER",
+        "GTS_PDFXVersion",
+        "CUS_DocIDbchkDocumentName",
+        "LastSaved",
+        "Jive_LatestUserAccountName",
+        "WORDLINK_BUILD",
+        "xmpMM:History:InstanceID",
+        "ICNAppName",
+        "Manual1",
+        "DEF_DM_DESCRIPTION",
+        "LMATTER",
+        "ICNAppVersion",
+        "DM_YEAR",
+        "ContentType",
+        "signature:reason",
+        "DM_PHONEBOOK",
+        "APTKVER",
+        "Offisync_ProviderInitializationData",
+        "DocID",
+        "NCCL_Status",
+        "Jive_VersionGuid",
+        "CUS_DocIDiPage",
+        "CUS_DocIDbchkDocumentNumber",
+        "doi",
+        "signature:name",
+        "DM_INSERTFOOTER",
+        "Manager",
+        "DM_OPERATOR",
+        "xmpMM:History:Action",
+        "pdfuaid:part",
+        "DM_PROMPTFORVERSION",
+        "WORDLINK_DISABLEFORMATTING",
+        "AFTY_WORDLINK",
+        "DM_FOOTER1STPAGE",
+        "GTS_PDFXConformance",
+        "ICNAppPlatform",
+        "hasSignature",
+        "Offisync_ServerID",
+        "DM_AFTYDOCID",
+        "CUS_DocIDString",
+        "CUS_DocIDbchkVersionNumber",
+        "ElsevierWebPDFSpecifications",
+        "X-TIKA:EXCEPTION:warn",
+        "pdfxid:version",
+        "NCCL_DocId",
+        "DM_CLIENT",
+        "DM_MATTER",
+        "pdfaid:conformance",
+        "Offisync_UpdateToken",
+        "ObjectDetailKey"
+      ],
+      "eml": [
+        "Message-To",
+        "Multipart-Subtype",
+        "Message-From",
+        "Message-Cc",
+        "Message:From-Name",
+        "Message:From-Email",
+        "Multipart-Boundary"
+      ],
+      "docx": [
+        "custom:_DocHome",
+        "custom:CUS_DocIDOperation",
+        "custom:TaxKeyword",
+        "custom:DocName",
+        "custom:display_urn:schemas-microsoft-com:office:office#Manager_x0020_Contact",
+        "custom:_dlc_DocId",
+        "custom:RecordPoint_ActiveItemWebId",
+        "custom:Revision Date",
+        "custom:EmailTo",
+        "custom:Copyright",
+        "custom:RecordPoint_SubmissionCompleted",
+        "custom:display_urn:schemas-microsoft-com:office:office#Author",
+        "custom:CUS_DocIDbchkDocumentName",
+        "custom:Status",
+        "custom:bjDocumentSecurityLabel",
+        "custom:BusinessServices",
+        "custom:CUS_DocIDiPage",
+        "custom:RecordPoint_ActiveItemSiteId",
+        "custom:_dlc_DocIdItemGuid",
+        "custom:CUS_DocIDbchkDocumentNumber",
+        "custom:PM Type",
+        "custom:PPG Type",
+        "custom:RESPONSE_SENDER_NAME",
+        "custom:xd_Signature",
+        "custom:ClientNumber",
+        "custom:CUS_DocIDbchkAuthorName",
+        "custom:TitusGUID",
+        "custom:RecordPoint_WorkflowType",
+        "custom:display_urn:schemas-microsoft-com:office:office#Editor",
+        "custom:CUS_DocIDbchkClientNumber",
+        "custom:Classification",
+        "custom:Order",
+        "custom:Version Number",
+        "custom:RecordPoint_RecordNumberSubmitted",
+        "custom:DEECD_ItemType",
+        "custom:CUS_DocIDchkNativeAuthor",
+        "custom:VersionNumber",
+        "custom:RecordPoint_ActiveItemUniqueId",
+        "custom:Author0",
+        "custom:EmailFrom",
+        "custom:CUS_DocIDbchkMatterNumber",
+        "custom:LibraryName",
+        "custom:DEECD_Author",
+        "custom:CUS_DocIDbChkLibDB",
+        "custom:DET_EDRMS_RCS",
+        "custom:CUS_DocIDbchkVersionNumber",
+        "custom:CUS_DocIDbchkTime",
+        "custom:MAIL_MSG_ID1",
+        "custom:bjDocumentLabelXML-0",
+        "custom:RecordPoint_ActiveItemListId",
+        "custom:docIndexRef",
+        "custom:Further Consideration",
+        "custom:DSDBI ClassificationCLASSIFICATION",
+        "custom:MAIL_MSG_ID2",
+        "custom:bjSaver",
+        "custom:DocNumber",
+        "custom:Comments0",
+        "custom:Change in Title",
+        "custom:CUS_DocIDString",
+        "custom:EmailSender",
+        "custom:Language",
+        "custom:Editor",
+        "custom:Posting Date",
+        "custom:DSDBI ClassificationDLM FOR SEC-MARKINGS",
+        "custom:AuthorName",
+        "custom:EMAIL_OWNER_ADDRESS",
+        "custom:Topic Letter",
+        "custom:bjDocumentLabelXML",
+        "custom:MatterNumber",
+        "custom:For?",
+        "custom:CUS_DocIDbchkDate",
+        "custom:Date completed",
+        "custom:_dlc_DocIdUrl"
+      ],
+      "doc": [
+        "custom:_PreviousAdHocReviewCycleID",
+        "w:Comments",
+        "custom:UN Language",
+        "custom:Security",
+        "custom:_AuthorEmail",
+        "custom:Linked To Page",
+        "custom:_AdHocReviewCycleID",
+        "custom:_CheckOutSrcUrl",
+        "X-TIKA:origResourceName",
+        "custom:Record Type",
+        "custom:Date",
+        "custom:_AuthorEmailDisplayName",
+        "custom:_EmailSubject",
+        "custom:_Author"
+      ],
+      "xlsx": [
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Application",
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Extended_MSFT_Method",
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Name",
+        "ReportName",
+        "RevisionNumber",
+        "Source",
+        "SV_HIDDEN_GRID_QUERY_LIST_4F35BF76-6C0D-4D9B-82B2-816C12CF3733",
+        "Classification",
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Enabled",
+        "PeriodId",
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_SetDate",
+        "DSDBI ClassificationCLASSIFICATION",
+        "DocumentNo",
+        "PeriodName",
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_Owner",
+        "ReportId",
+        "Sensitivity",
+        "ChapterName",
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_ActionId",
+        "MSIP_Label_2b30ed1b-e95f-40b5-af89-828263f287a7_SiteId",
+        "DSDBI ClassificationDLM FOR SEC-MARKINGS",
+        "isLinkedAndViewmode",
+        "TitusGUID",
+        "SV_QUERY_LIST_4F35BF76-6C0D-4D9B-82B2-816C12CF3733",
+        "Copyright",
+        "ChapterId",
+        "TotalEditingTime"
+      ],
+      "pptx": [
+        "custom:TemplateCategory",
+        "custom:Division"
+      ],
+      "htm": [
+        "msvalidate.01",
+        "ROBOTS",
+        "pageCreatedAt",
+        "author",
+        "CmsPageId",
+        "sniply-options",
+        "format-detection",
+        "msapplication-square150x150logo",
+        "twitter:description",
+        "refresh",
+        "copyright",
+        "og:image:secure_url",
+        "siteid",
+        "article:published_time",
+        "title",
+        "article:publisher",
+        "Updated Date",
+        "country",
+        "AUTHOR",
+        "translated",
+        "serp-content-type",
+        "twitter:image",
+        "Description",
+        "Content-Location",
+        "referrer",
+        "msapplication-square70x70logo",
+        "fb:app_id",
+        "entity_id",
+        "msapplication-config",
+        "Generator",
+        "expires",
+        "pragma",
+        "MobileOptimized",
+        "KeyWords",
+        "og:description",
+        "publishDate",
+        "og:updated_time",
+        "Language",
+        "cache-control",
+        "theme-color",
+        "countryid",
+        "HandheldFriendly",
+        "altpages",
+        "og:image:type"
+      ],
+      "xls": [
+        "_PID_HLINKS",
+        "formulasLongerThan100",
+        "_PreviousAdHocReviewCycleID",
+        "containVBA"
+      ],
+      "master": [
+        "Expires",
+        "progid"
+      ],
+      "html": [
+        "csrf-token",
+        "bingbot",
+        "programs",
+        "has_audio",
+        "googlebot",
+        "csrf-param",
+        "nid"
+      ],
+      "PDF": [
+        "_DocHome"
+      ]
+    }
+  }
+}
