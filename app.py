@@ -1,5 +1,30 @@
 """
 Aparavi Reporting Dashboard - Main Application
+
+This is the main entry point for the Aparavi Reporting Dashboard, a Streamlit application 
+that provides comprehensive analytics and visualizations for document management data
+from the Aparavi Data Suite.
+
+The application is built using Streamlit for the UI, DuckDB for data processing, and Plotly for
+visualizations. It features a modular architecture with separate components for database
+handling, visualizations, and specialized analysis.
+
+Key features:
+- Interactive dashboard with multiple report types
+- Professional Aparavi branding throughout the interface
+- Comprehensive document analytics
+- Storage and permission analysis
+- Folder structure visualization
+- Metadata analysis across different file types
+- Export capabilities for further analysis
+
+The Aparavi branding is implemented through:
+1. Centralized configuration in config.py
+2. Custom CSS for styling
+3. Aparavi logo integration in header and favicon
+4. Consistent color scheme using Aparavi brand colors
+5. Professional, emoji-free interface design
+6. Branded messaging and terminology
 """
 
 import streamlit as st
@@ -34,55 +59,72 @@ def get_base64_encoded_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
-# Create the favicon
+# Create the favicon using Aparavi's logo
+# This replaces the default Streamlit logo with the Aparavi branding in the browser tab
 favicon = get_base64_encoded_image(os.path.join(config.IMAGES_DIR, "logo-48x48.png"))
 
-# Set page configuration
+# Set page configuration with Aparavi branding
 st.set_page_config(
-    page_title=config.APP_TITLE,
-    page_icon=f"data:image/png;base64,{favicon}",
-    layout=config.PAGE_LAYOUT,
-    initial_sidebar_state=config.SIDEBAR_STATE
+    page_title=config.APP_TITLE,  # Sets browser tab title to "Aparavi Reporting Dashboard"
+    page_icon=f"data:image/png;base64,{favicon}",  # Sets Aparavi logo as favicon
+    layout=config.PAGE_LAYOUT,  # Wide layout for better visualization
+    initial_sidebar_state=config.SIDEBAR_STATE  # Start with sidebar expanded
 )
 
-# CSS to improve app appearance
+# Custom CSS to implement Aparavi branding and styling throughout the application
+# This CSS overrides the default Streamlit styling with Aparavi's brand colors and UI elements
 st.markdown("""
 <style>
+    /* Main header styling using Aparavi brand colors */
     .main-header {
         font-size: 2.5rem;
         font-weight: 700;
-        color: #080A0D;
+        color: #080A0D;  /* Aparavi dark color for text */
         margin-bottom: 1rem;
     }
+    
+    /* Header container for the Aparavi logo */
     .aparavi-header {
         display: flex;
         align-items: center;
         margin-bottom: 2rem;
     }
+    
+    /* Aparavi logo styling */
     .aparavi-logo {
         max-width: 255px;
         margin-bottom: 1rem;
     }
+    
+    /* Report description styling with Aparavi brand colors */
     .report-header {
-        background-color: #F9F9FB;
+        background-color: #F9F9FB;  /* Aparavi light background */
         padding: 1.5rem;
         border-radius: 5px;
-        border-left: 5px solid #EF4E0A;
+        border-left: 5px solid #EF4E0A;  /* Aparavi orange as accent */
         margin-bottom: 2rem;
     }
+    
+    /* Section headers with Aparavi teal accents */
     .section-header {
-        color: #51565D;
-        border-bottom: 2px solid #56BBCC;
+        color: #51565D;  /* Aparavi gray for text */
+        border-bottom: 2px solid #56BBCC;  /* Aparavi teal for section dividers */
         padding-bottom: 0.5rem;
     }
+    
+    /* Buttons styled with Aparavi primary orange */
     .stButton>button {
-        background-color: #EF4E0A;
+        background-color: #EF4E0A;  /* Aparavi primary orange */
         color: white;
     }
+    
+    /* Button hover state with slightly darker orange */
     .stButton>button:hover {
-        background-color: #d43d00;
+        background-color: #d43d00;  /* Darker shade of Aparavi orange */
         color: white;
     }
+    
+    /* Metric container styling */
     .metric-container {
         background-color: #f8f9fa;
         border-radius: 5px;
@@ -109,18 +151,28 @@ def get_database_connection(db_path):
     return DatabaseManager(db_path)
 
 def render_header():
-    """Render application header and description"""
-    # Display Aparavi logo
+    """
+    Render application header and description
+    
+    The header is a critical component of the Aparavi branding implementation.
+    It displays the Aparavi logo prominently at the top of the page, followed by
+    the application title and a welcome message that references Aparavi Data Suite.
+    The styling uses Aparavi's brand colors with appropriate spacing and typography.
+    """
+    # Display Aparavi logo at the top of the application
+    # This is the primary branding element visible to users
     st.markdown(f"""
     <div class="aparavi-header">
         <img src="data:image/png;base64,{get_base64_encoded_image(config.APP_LOGO)}" class="aparavi-logo" alt="Aparavi Logo">
     </div>
     """, unsafe_allow_html=True)
     
-    # Display application title
+    # Display application title with Aparavi branding
+    # Using custom CSS class 'main-header' styled with Aparavi's typography and colors
     st.markdown(f"<h1 class='main-header'>{config.APP_TITLE}</h1>", unsafe_allow_html=True)
     
-    # Welcome message with Aparavi branding
+    # Welcome message with explicit reference to Aparavi Data Suite
+    # Using the report-header class styled with Aparavi's colors and border accents
     st.markdown("""
     <div class="report-header">
     <p>Welcome to the Aparavi Reporting Dashboard, providing comprehensive analytics and visualization of document management data from Aparavi Data Suite. 
@@ -129,9 +181,17 @@ def render_header():
     """, unsafe_allow_html=True)
 
 def render_sidebar():
-    """Render sidebar with navigation and options"""
+    """
+    Render sidebar with navigation and options
+    
+    The sidebar reinforces the Aparavi branding with a smaller logo at the top,
+    followed by navigation options organized into logical categories.
+    The styling is consistent with the main dashboard, using
+    Aparavi's brand colors and typography.
+    """
     with st.sidebar:
-        # Logo in sidebar
+        # Logo in sidebar for consistent branding across all navigation states
+        # Using the square version of the Aparavi logo for better fit in the sidebar
         st.markdown(f"""
         <div style="text-align: center; margin-bottom: 2rem;">
             <img src="data:image/png;base64,{get_base64_encoded_image(config.IMAGES_DIR / 'logo-90x90.png')}" width="90" alt="Aparavi Logo">
@@ -140,53 +200,86 @@ def render_sidebar():
         
         st.markdown("## Navigation")
         
-        # Database selector
-        db_path = st.text_input(
-            "Database Path", 
-            value=config.DEFAULT_DB_PATH,
-            help="Enter the path to your DuckDB database file"
+        # Use predefined database path
+        db_path = config.DEFAULT_DB_PATH
+        
+        # Category and report selection
+        category_options = list(config.REPORT_CATEGORIES.keys())
+        
+        # Select category
+        selected_category = st.selectbox(
+            "Select Category",
+            category_options,
+            format_func=lambda x: config.REPORT_CATEGORIES[x]["name"]
         )
         
-        # Report selection
-        report_options = list(config.REPORTS.keys())
-        report_labels = [f"{config.REPORTS[r]['title']}" for r in report_options]
+        # Get reports in the selected category
+        category_reports = config.REPORT_CATEGORIES[selected_category]["reports"]
+        report_options = list(category_reports.keys())
         
-        selected_report_label = st.radio("Select Report", report_labels)
-        selected_report = report_options[report_labels.index(selected_report_label)]
+        # Format the report options to show their titles
+        report_format_func = lambda x: category_reports[x]["title"]
+        
+        # Select report within the category
+        selected_report = st.radio(
+            f"{config.REPORT_CATEGORIES[selected_category]['description']}",
+            report_options,
+            format_func=report_format_func
+        )
         
         # Options
-        st.markdown("## Options")
+        st.markdown("## Chart Options")
         
-        # Chart style
+        # Chart style explanation
+        st.markdown("""
+        <div style="font-size: 0.85rem; color: #51565D;">
+        Chart styles affect the visual presentation of graphs including colors, backgrounds, and grid lines. 
+        Each style is optimized for different viewing scenarios and preferences.
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Chart style with enhanced descriptions
+        chart_style_options = {
+            "ggplot": "Professional with light grid (Default)", 
+            "seaborn-darkgrid": "Dark grid with bold colors for contrast",
+            "seaborn-deep": "Rich, vibrant color palette for data distinction",
+            "fivethirtyeight": "Data journalism style with minimal decoration",
+            "dark_background": "Dark mode for low-light viewing environments"
+        }
+        
         chart_style = st.selectbox(
-            "Chart Style",
-            ["ggplot", "seaborn-darkgrid", "seaborn-deep", "fivethirtyeight", "dark_background"],
+            "Visualization Style",
+            list(chart_style_options.keys()),
+            format_func=lambda x: chart_style_options[x],
             index=0
         )
-        
-        # Export options
-        st.markdown("## Export")
-        export_format = st.selectbox("Export Format", config.EXPORT_FORMATS)
         
         # About section
         st.markdown("---")
         st.markdown("### About")
+        
+        # Get database connection for version info
+        db_conn = get_database_connection(db_path)
+        duckdb_version = db_conn.get_version()
+        
         st.markdown(f"""
         **Aparavi Reporting Dashboard**  
         Version 1.1.0  
-        {datetime.now().year} - Aparavi Data Suite
+        DuckDB Version: {duckdb_version}  
+        
+        Built with Streamlit and ❤️
         """)
         
     return {
         "db_path": db_path,
         "selected_report": selected_report,
         "chart_style": chart_style,
-        "export_format": export_format
+        "export_format": None  # Export removed
     }
 
 def render_overview_report(db):
     """Render overview dashboard with key metrics"""
-    st.markdown("<h2 class='section-header'>Dashboard Overview</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='section-header'>Executive Summary</h2>", unsafe_allow_html=True)
     
     # Key metrics row
     col1, col2, col3, col4 = st.columns(4)
@@ -247,7 +340,9 @@ def render_overview_report(db):
                 DATE_TRUNC('month', to_timestamp(createdAt/1000)) as month,
                 COUNT(*) as count
             FROM objects
-            WHERE createdAt IS NOT NULL
+            WHERE createdAt IS NOT NULL 
+              AND createdAt > 86400000  -- Filter out dates before 1970-01-02 (one day after epoch)
+              AND createdAt < 4102444800000  -- Filter out dates after 2100-01-01
             GROUP BY month
             ORDER BY month
         """)
@@ -331,8 +426,8 @@ def render_overview_report(db):
             st.warning(f"Could not generate service distribution: {e}")
 
 def render_objects_report(db):
-    """Render objects analysis report"""
-    st.markdown("<h2 class='section-header'>Objects Analysis</h2>", unsafe_allow_html=True)
+    """Render document objects report"""
+    st.markdown("<h2 class='section-header'>Content Type Analysis</h2>", unsafe_allow_html=True)
     
     # Total objects
     total_objects = db.get_row_count('objects')
@@ -383,7 +478,9 @@ def render_objects_report(db):
             DATE_TRUNC('month', to_timestamp(createdAt/1000)) as month,
             COUNT(*) as count
         FROM objects
-        WHERE createdAt IS NOT NULL
+        WHERE createdAt IS NOT NULL 
+          AND createdAt > 86400000  -- Filter out dates before 1970-01-02 (one day after epoch)
+          AND createdAt < 4102444800000  -- Filter out dates after 2100-01-01
         GROUP BY month
         ORDER BY month
     """)
@@ -405,16 +502,21 @@ def render_objects_report(db):
     st.markdown("<h3 class='subsection-header'>Tags Analysis</h3>", unsafe_allow_html=True)
     
     try:
-        # Tag distribution
+        # Use a simpler approach that won't result in array values
         tag_distribution = db.query("""
+            -- Count objects that have tags
             SELECT 
-                json_extract_string(value, '$.key') as tag_key,
+                'Has Tags' as tag_key,
                 COUNT(*) as count
-            FROM objects, 
-                 json_each(CASE WHEN tags = '' OR tags IS NULL THEN '[]' ELSE tags END) 
-            GROUP BY tag_key
-            ORDER BY count DESC
-            LIMIT 20
+            FROM objects
+            WHERE tags IS NOT NULL AND tags != '[]' AND tags != ''
+            UNION ALL
+            -- Count objects without tags
+            SELECT 
+                'No Tags' as tag_key,
+                COUNT(*) as count
+            FROM objects
+            WHERE tags IS NULL OR tags = '[]' OR tags = ''
         """)
         
         if not tag_distribution.empty and len(tag_distribution) > 0:
@@ -422,9 +524,9 @@ def render_objects_report(db):
             
             # Visualize tag distribution
             fig = plot_bar_chart(
-                tag_distribution.head(10), 
+                tag_distribution, 
                 'count', 'tag_key', 
-                'Top Tags',
+                'Tag Distribution',
                 'Count', 'Tag',
                 figsize=(10, 6),
                 horizontal=True
@@ -436,8 +538,8 @@ def render_objects_report(db):
         st.warning(f"Error analyzing tags: {e}")
 
 def render_instances_report(db):
-    """Render instances and storage analysis report"""
-    st.markdown("<h2 class='section-header'>Instances & Storage</h2>", unsafe_allow_html=True)
+    """Render file instances report"""
+    st.markdown("<h2 class='section-header'>Storage Analysis</h2>", unsafe_allow_html=True)
     
     # Storage statistics
     st.markdown("<h3 class='subsection-header'>Storage Statistics</h3>", unsafe_allow_html=True)
@@ -536,8 +638,8 @@ def render_instances_report(db):
         st.warning(f"Error analyzing services: {e}")
 
 def render_folder_structure_report(db):
-    """Render folder structure analysis report"""
-    st.markdown("<h2 class='section-header'>Folder Structure</h2>", unsafe_allow_html=True)
+    """Render folder structure report"""
+    st.markdown("<h2 class='section-header'>Directory Structure</h2>", unsafe_allow_html=True)
     
     # Query parent paths data
     parent_paths_df = db.query("""
@@ -669,8 +771,8 @@ def render_folder_structure_report(db):
         st.warning("No data available for visualization after applying filters.")
 
 def render_storage_sunburst_report(db):
-    """Render storage sunburst visualization report"""
-    st.markdown("<h2 class='section-header'>Storage Sunburst</h2>", unsafe_allow_html=True)
+    """Render storage visualization report with sunburst chart"""
+    st.markdown("<h2 class='section-header'>Storage Distribution</h2>", unsafe_allow_html=True)
     
     # Query objects with size data
     objects_with_size = db.query("""
@@ -771,8 +873,8 @@ def render_storage_sunburst_report(db):
     )
 
 def render_file_distribution_report(db):
-    """Render file distribution analysis report"""
-    st.markdown("<h2 class='section-header'>File Distribution</h2>", unsafe_allow_html=True)
+    """Render file distribution report"""
+    st.markdown("<h2 class='section-header'>Document Distribution</h2>", unsafe_allow_html=True)
     
     # Query file extension data
     file_extensions = db.query("""
@@ -881,9 +983,7 @@ def render_file_distribution_report(db):
 
 def render_metadata_analysis_report(db):
     """Render metadata analysis report"""
-    report_info = config.REPORTS["metadata_analysis"]
-    st.markdown(f"<h2 class='section-header'>{report_info['title']}</h2>", unsafe_allow_html=True)
-    st.markdown(report_info['description'])
+    st.markdown("<h2 class='section-header'>Metadata Insights</h2>", unsafe_allow_html=True)
     
     # Call the render function from the metadata_analysis module
     render_metadata_analysis_dashboard(db)
