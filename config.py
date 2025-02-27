@@ -80,63 +80,92 @@ CHART_COLORS = {
 EXPORT_FORMATS = ["csv", "json", "xlsx"]  # Supported export formats
 MAX_EXPORT_ROWS = 100000  # Maximum number of rows to export for performance
 
-# Report configuration
-# Each report has a title, icon (unused with current branding), and description
-# The icons were previously emojis but were removed for a more professional look
-REPORTS = {
+# Report configuration organized into logical categories
+# Reports are grouped to provide a more intuitive navigation experience
+REPORT_CATEGORIES = {
     "overview": {
-        "title": "Dashboard Overview",
-        "icon": "",  # Previously an emoji icon, removed for professional branding
-        "description": "High-level overview of document management statistics"
+        "name": "Dashboard",
+        "description": "High-level dashboards and summary views",
+        "reports": {
+            "overview": {
+                "title": "Executive Summary",
+                "icon": "",
+                "description": "Key metrics and high-level overview of your document ecosystem"
+            }
+        }
     },
-    "objects": {
-        "title": "Objects Analysis",
-        "icon": "",
-        "description": "Analysis of document objects and their properties"
+    "content": {
+        "name": "Content Analysis",
+        "description": "Analyze document content and properties",
+        "reports": {
+            "objects": {
+                "title": "Document Analysis",
+                "icon": "",
+                "description": "Detailed analysis of documents, file types, and properties"
+            },
+            "metadata_analysis": {
+                "title": "Metadata Insights",
+                "icon": "",
+                "description": "Explore and compare metadata across different file types"
+            },
+            "classifications": {
+                "title": "Content Categories",
+                "icon": "",
+                "description": "Analysis of document classifications and categories"
+            }
+        }
     },
-    "instances": {
-        "title": "Instances & Storage",
-        "icon": "",
-        "description": "Analysis of document instances and storage metrics"
+    "storage": {
+        "name": "Storage & Structure",
+        "description": "Analyze storage usage and folder organization",
+        "reports": {
+            "instances": {
+                "title": "Storage Overview",
+                "icon": "",
+                "description": "Analysis of storage usage and document instances"
+            },
+            "folder_structure": {
+                "title": "Folder Organization",
+                "icon": "",
+                "description": "Visual representation of your folder hierarchies"
+            },
+            "storage_sunburst": {
+                "title": "Storage Distribution",
+                "icon": "",
+                "description": "Interactive visualization of storage usage by folder"
+            },
+            "file_distribution": {
+                "title": "File Distribution",
+                "icon": "",
+                "description": "Analysis of file distribution across your ecosystem"
+            }
+        }
     },
-    "classifications": {
-        "title": "Classifications",
-        "icon": "",
-        "description": "Analysis of document classifications and categories"
-    },
-    "permissions": {
-        "title": "Security & Permissions",
-        "icon": "",
-        "description": "Analysis of document permissions and access controls"
-    },
-    "services": {
-        "title": "Services",
-        "icon": "",
-        "description": "Analysis of services interacting with documents"
-    },
-    "messages": {
-        "title": "Messages",
-        "icon": "",
-        "description": "Analysis of message data related to documents"
-    },
-    "folder_structure": {
-        "title": "Folder Structure",
-        "icon": "",
-        "description": "Visualization and analysis of folder hierarchies"
-    },
-    "storage_sunburst": {
-        "title": "Storage Sunburst",
-        "icon": "",
-        "description": "Interactive sunburst visualization of storage usage by folder"
-    },
-    "file_distribution": {
-        "title": "File Distribution",
-        "icon": "",
-        "description": "Distribution of files across folder hierarchy"
-    },
-    "metadata_analysis": {
-        "title": "Metadata Analysis",
-        "icon": "",
-        "description": "Analysis and comparison of metadata across different file types"
+    "security": {
+        "name": "Security & Governance",
+        "description": "Analyze security settings and permissions",
+        "reports": {
+            "permissions": {
+                "title": "Access Controls",
+                "icon": "",
+                "description": "Analysis of document permissions and security settings"
+            },
+            "services": {
+                "title": "Service Interactions",
+                "icon": "",
+                "description": "Analysis of services interacting with documents"
+            },
+            "messages": {
+                "title": "System Messages",
+                "icon": "",
+                "description": "Analysis of system messages related to documents"
+            }
+        }
     }
 }
+
+# Flat dictionary of all reports for backward compatibility
+REPORTS = {}
+for category in REPORT_CATEGORIES.values():
+    for report_id, report in category["reports"].items():
+        REPORTS[report_id] = report

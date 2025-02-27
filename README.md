@@ -122,6 +122,19 @@ reporting-project/
 └── data/                     # Sample data and database files
 ```
 
+## Troubleshooting
+
+### Common Issues
+
+- **Database Lock Error**: If you encounter a "Could not set lock on file" error, it means another process is using the database. Close other instances of the app and try again.
+- **Missing Libraries**: Make sure to install all the required dependencies with `pip install -r requirements.txt`.
+- **DuckDB JSON Functions**: This project has been updated to be compatible with different versions of DuckDB:
+  - Older versions of DuckDB may not support `json_array_elements` or other advanced JSON functions
+  - The app now uses simplified JSON queries that are more widely compatible
+  - If you encounter JSON-related errors, try updating DuckDB to the latest version with `pip install duckdb --upgrade`
+  - In case of persistent issues, the app will gracefully degrade functionality rather than crash
+- **Date/Time Filtering**: The app now filters out invalid timestamps (like the epoch timestamp from 1970) to ensure more accurate visualizations.
+
 ## Adding New Reports
 
 1. Define the report in `config.py`
