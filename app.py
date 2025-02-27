@@ -1,5 +1,30 @@
 """
 Aparavi Reporting Dashboard - Main Application
+
+This is the main entry point for the Aparavi Reporting Dashboard, a Streamlit application 
+that provides comprehensive analytics and visualizations for document management data
+from the Aparavi Data Suite.
+
+The application is built using Streamlit for the UI, DuckDB for data processing, and Plotly for
+visualizations. It features a modular architecture with separate components for database
+handling, visualizations, and specialized analysis.
+
+Key features:
+- Interactive dashboard with multiple report types
+- Professional Aparavi branding throughout the interface
+- Comprehensive document analytics
+- Storage and permission analysis
+- Folder structure visualization
+- Metadata analysis across different file types
+- Export capabilities for further analysis
+
+The Aparavi branding is implemented through:
+1. Centralized configuration in config.py
+2. Custom CSS for styling
+3. Aparavi logo integration in header and favicon
+4. Consistent color scheme using Aparavi brand colors
+5. Professional, emoji-free interface design
+6. Branded messaging and terminology
 """
 
 import streamlit as st
@@ -34,55 +59,72 @@ def get_base64_encoded_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
-# Create the favicon
+# Create the favicon using Aparavi's logo
+# This replaces the default Streamlit logo with the Aparavi branding in the browser tab
 favicon = get_base64_encoded_image(os.path.join(config.IMAGES_DIR, "logo-48x48.png"))
 
-# Set page configuration
+# Set page configuration with Aparavi branding
 st.set_page_config(
-    page_title=config.APP_TITLE,
-    page_icon=f"data:image/png;base64,{favicon}",
-    layout=config.PAGE_LAYOUT,
-    initial_sidebar_state=config.SIDEBAR_STATE
+    page_title=config.APP_TITLE,  # Sets browser tab title to "Aparavi Reporting Dashboard"
+    page_icon=f"data:image/png;base64,{favicon}",  # Sets Aparavi logo as favicon
+    layout=config.PAGE_LAYOUT,  # Wide layout for better visualization
+    initial_sidebar_state=config.SIDEBAR_STATE  # Start with sidebar expanded
 )
 
-# CSS to improve app appearance
+# Custom CSS to implement Aparavi branding and styling throughout the application
+# This CSS overrides the default Streamlit styling with Aparavi's brand colors and UI elements
 st.markdown("""
 <style>
+    /* Main header styling using Aparavi brand colors */
     .main-header {
         font-size: 2.5rem;
         font-weight: 700;
-        color: #080A0D;
+        color: #080A0D;  /* Aparavi dark color for text */
         margin-bottom: 1rem;
     }
+    
+    /* Header container for the Aparavi logo */
     .aparavi-header {
         display: flex;
         align-items: center;
         margin-bottom: 2rem;
     }
+    
+    /* Aparavi logo styling */
     .aparavi-logo {
         max-width: 255px;
         margin-bottom: 1rem;
     }
+    
+    /* Report description styling with Aparavi brand colors */
     .report-header {
-        background-color: #F9F9FB;
+        background-color: #F9F9FB;  /* Aparavi light background */
         padding: 1.5rem;
         border-radius: 5px;
-        border-left: 5px solid #EF4E0A;
+        border-left: 5px solid #EF4E0A;  /* Aparavi orange as accent */
         margin-bottom: 2rem;
     }
+    
+    /* Section headers with Aparavi teal accents */
     .section-header {
-        color: #51565D;
-        border-bottom: 2px solid #56BBCC;
+        color: #51565D;  /* Aparavi gray for text */
+        border-bottom: 2px solid #56BBCC;  /* Aparavi teal for section dividers */
         padding-bottom: 0.5rem;
     }
+    
+    /* Buttons styled with Aparavi primary orange */
     .stButton>button {
-        background-color: #EF4E0A;
+        background-color: #EF4E0A;  /* Aparavi primary orange */
         color: white;
     }
+    
+    /* Button hover state with slightly darker orange */
     .stButton>button:hover {
-        background-color: #d43d00;
+        background-color: #d43d00;  /* Darker shade of Aparavi orange */
         color: white;
     }
+    
+    /* Metric container styling */
     .metric-container {
         background-color: #f8f9fa;
         border-radius: 5px;
@@ -109,18 +151,28 @@ def get_database_connection(db_path):
     return DatabaseManager(db_path)
 
 def render_header():
-    """Render application header and description"""
-    # Display Aparavi logo
+    """
+    Render application header and description
+    
+    The header is a critical component of the Aparavi branding implementation.
+    It displays the Aparavi logo prominently at the top of the page, followed by
+    the application title and a welcome message that references Aparavi Data Suite.
+    The styling uses Aparavi's brand colors with appropriate spacing and typography.
+    """
+    # Display Aparavi logo at the top of the application
+    # This is the primary branding element visible to users
     st.markdown(f"""
     <div class="aparavi-header">
         <img src="data:image/png;base64,{get_base64_encoded_image(config.APP_LOGO)}" class="aparavi-logo" alt="Aparavi Logo">
     </div>
     """, unsafe_allow_html=True)
     
-    # Display application title
+    # Display application title with Aparavi branding
+    # Using custom CSS class 'main-header' styled with Aparavi's typography and colors
     st.markdown(f"<h1 class='main-header'>{config.APP_TITLE}</h1>", unsafe_allow_html=True)
     
-    # Welcome message with Aparavi branding
+    # Welcome message with explicit reference to Aparavi Data Suite
+    # Using the report-header class styled with Aparavi's colors and border accents
     st.markdown("""
     <div class="report-header">
     <p>Welcome to the Aparavi Reporting Dashboard, providing comprehensive analytics and visualization of document management data from Aparavi Data Suite. 
@@ -129,9 +181,17 @@ def render_header():
     """, unsafe_allow_html=True)
 
 def render_sidebar():
-    """Render sidebar with navigation and options"""
+    """
+    Render sidebar with navigation and options
+    
+    The sidebar reinforces the Aparavi branding with a smaller logo at the top,
+    followed by navigation options and an "About" section that further references
+    the Aparavi Data Suite. The styling is consistent with the main dashboard, using
+    Aparavi's brand colors and typography.
+    """
     with st.sidebar:
-        # Logo in sidebar
+        # Logo in sidebar for consistent branding across all navigation states
+        # Using the square version of the Aparavi logo for better fit in the sidebar
         st.markdown(f"""
         <div style="text-align: center; margin-bottom: 2rem;">
             <img src="data:image/png;base64,{get_base64_encoded_image(config.IMAGES_DIR / 'logo-90x90.png')}" width="90" alt="Aparavi Logo">
