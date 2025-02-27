@@ -7,6 +7,8 @@ A powerful Streamlit application for analyzing document management data from the
 - **Comprehensive Analytics**: Analyze file types, storage patterns, permissions, and more
 - **Interactive Visualizations**: Explore your data with interactive charts and graphs
 - **Metadata Analysis**: Explore and compare metadata structures across different file types
+- **Document Lifecycle**: Track document aging, modification patterns, and complete lifecycle timelines
+- **Security & Governance**: Analyze permission distribution and access patterns for compliance
 - **Export Capabilities**: Export reports and data in various formats
 - **Performance Optimized**: Built with DuckDB for high-performance data analysis
 - **Aparavi Branding**: Professionally themed with Aparavi's visual identity
@@ -28,9 +30,24 @@ A powerful Streamlit application for analyzing document management data from the
 
 ## Usage
 
-Run the Streamlit app:
+Run the Streamlit app using the provided shell script (recommended):
 
 ```bash
+./run.sh
+```
+
+This script ensures a clean start by stopping any previous instances before launching the dashboard.
+
+Alternatively, you can run the Streamlit app directly:
+
+```bash
+streamlit run app.py
+```
+
+Note: If you encounter database locking issues, make sure to stop any running instances first:
+
+```bash
+pkill -f streamlit
 streamlit run app.py
 ```
 
@@ -49,6 +66,8 @@ The Aparavi Reporting Dashboard works by connecting to a DuckDB database that co
 4. **Analysis Modules**: Specialized analysis modules in the `modules/` directory provide specific functionality:
    - `folder_analysis.py`: Hierarchical folder structure analysis with sunburst charts
    - `metadata_analysis.py`: Advanced metadata parsing and comparison across file types
+   - `document_lifecycle.py`: Document aging, modification patterns, and lifecycle timeline analysis
+   - `security_governance.py`: Permission distribution and access pattern analysis
 
 ### Data Flow
 
@@ -66,9 +85,11 @@ The Aparavi Reporting Dashboard was developed through the following process:
 1. **Initial Framework**: Created a Streamlit application with basic DuckDB connectivity
 2. **Core Analytics**: Implemented essential document analytics reports (objects, storage, permissions)
 3. **Advanced Analysis**: Added specialized analysis modules for folder structure and metadata
-4. **Aparavi Branding**: Transformed the UI with Aparavi's color palette, logos, and styling
-5. **Performance Optimization**: Implemented query caching and rendering improvements
-6. **Usability Enhancements**: Added export options and improved user interaction flows
+4. **Lifecycle Tracking**: Developed document age analysis and modification pattern tracking
+5. **Security Insights**: Implemented permission distribution and access pattern analysis
+6. **Aparavi Branding**: Transformed the UI with Aparavi's color palette, logos, and styling
+7. **Performance Optimization**: Implemented query caching and rendering improvements
+8. **Usability Enhancements**: Added export options and improved user interaction flows
 
 ### Branding Implementation
 
@@ -99,27 +120,21 @@ The application expects an Aparavi Data Suite DuckDB database with the following
 
 ```
 reporting-project/
-├── app.py                    # Main Streamlit app entry point
-├── config.py                 # Configuration settings and brand colors
-├── requirements.txt          # Dependencies
-├── README.md                 # Documentation
+├── app.py                    # Main application file
+├── config.py                 # Configuration settings
+├── requirements.txt          # Python dependencies
+├── sample.duckdb             # Sample database file
+├── README.md                 # This documentation
+├── images/                   # Aparavi logo and images
+│   ├── logo-255x115.png      # Aparavi logo for header
+│   └── logo-48x48.png        # Favicon logo
 ├── modules/                  # Modular components
 │   ├── database.py           # Database connection and queries
 │   ├── visualizations.py     # Chart generation functions
 │   ├── folder_analysis.py    # Folder structure analysis
-│   └── metadata_analysis.py  # Metadata analysis module
-├── utils/                    # Utility scripts
-│   ├── analyze_metadata.py   # Metadata analysis utility
-│   ├── analyze_relationships.py # Table relationship analysis
-│   ├── export_database.py    # Database export utility
-│   ├── visualize_schema.py   # Schema visualization utility
-│   └── README.md             # Utility documentation
-├── images/                   # Image assets for branding
-│   ├── logo-48x48.png        # Favicon
-│   ├── logo-90x90.png        # Small logo
-│   ├── logo-216x216.png      # Medium logo
-│   └── logo-255x115.png      # Header logo
-└── data/                     # Sample data and database files
+│   ├── metadata_analysis.py  # Metadata analysis module
+│   ├── document_lifecycle.py # Document lifecycle analysis
+│   └── security_governance.py # Security and governance analysis
 ```
 
 ## Troubleshooting

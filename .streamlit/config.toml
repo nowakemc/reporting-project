@@ -1,0 +1,9 @@
+[theme]
+# Base colors
+primaryColor = "#EF4E0A"    # Aparavi orange
+backgroundColor = "#222222" # Dark background
+secondaryBackgroundColor = "#333333" # Darker panels
+textColor = "#FFFFFF"       # White text
+
+# Font settings
+font = "sans serif"

@@ -80,92 +80,114 @@ CHART_COLORS = {
 EXPORT_FORMATS = ["csv", "json", "xlsx"]  # Supported export formats
 MAX_EXPORT_ROWS = 100000  # Maximum number of rows to export for performance
 
-# Report configuration organized into logical categories
-# Reports are grouped to provide a more intuitive navigation experience
+# Define report categories with nested reports
 REPORT_CATEGORIES = {
-    "overview": {
+    "dashboard": {
         "name": "Dashboard",
-        "description": "High-level dashboards and summary views",
+        "description": "Overview and Executive Summary",
         "reports": {
             "overview": {
                 "title": "Executive Summary",
-                "icon": "",
-                "description": "Key metrics and high-level overview of your document ecosystem"
+                "description": "High-level dashboard showing key metrics and insights",
+                "function": "render_overview_report"
             }
         }
     },
-    "content": {
+    "content_analysis": {
         "name": "Content Analysis",
-        "description": "Analyze document content and properties",
+        "description": "Analyze document types and content",
         "reports": {
             "objects": {
-                "title": "Document Analysis",
-                "icon": "",
-                "description": "Detailed analysis of documents, file types, and properties"
+                "title": "Content Type Analysis",
+                "description": "Analyze document types, extensions, and classifications",
+                "function": "render_objects_report"
             },
-            "metadata_analysis": {
+            "metadata": {
                 "title": "Metadata Insights",
-                "icon": "",
-                "description": "Explore and compare metadata across different file types"
-            },
-            "classifications": {
-                "title": "Content Categories",
-                "icon": "",
-                "description": "Analysis of document classifications and categories"
+                "description": "Analyze document metadata patterns and trends",
+                "function": "render_metadata_analysis_report"
             }
         }
     },
-    "storage": {
+    "storage_structure": {
         "name": "Storage & Structure",
-        "description": "Analyze storage usage and folder organization",
+        "description": "Analyze data storage and organization",
         "reports": {
             "instances": {
-                "title": "Storage Overview",
-                "icon": "",
-                "description": "Analysis of storage usage and document instances"
+                "title": "Storage Analysis",
+                "description": "Analyze storage utilization and distribution",
+                "function": "render_instances_report"
             },
             "folder_structure": {
-                "title": "Folder Organization",
-                "icon": "",
-                "description": "Visual representation of your folder hierarchies"
+                "title": "Directory Structure",
+                "description": "Analyze folder hierarchy and document organization",
+                "function": "render_folder_structure_report"
             },
             "storage_sunburst": {
                 "title": "Storage Distribution",
-                "icon": "",
-                "description": "Interactive visualization of storage usage by folder"
+                "description": "Visualize storage allocation with interactive sunburst chart",
+                "function": "render_storage_sunburst_report"
             },
             "file_distribution": {
-                "title": "File Distribution",
-                "icon": "",
-                "description": "Analysis of file distribution across your ecosystem"
+                "title": "Document Distribution",
+                "description": "Analyze how documents are distributed across the system",
+                "function": "render_file_distribution_report"
             }
         }
     },
-    "security": {
-        "name": "Security & Governance",
-        "description": "Analyze security settings and permissions",
+    "document_lifecycle": {
+        "name": "Document Lifecycle",
+        "description": "Analyze document creation, changes, and aging",
         "reports": {
-            "permissions": {
-                "title": "Access Controls",
-                "icon": "",
-                "description": "Analysis of document permissions and security settings"
+            "document_age": {
+                "title": "Document Aging Analysis",
+                "description": "Analyze the age distribution of documents in the system",
+                "function": "render_document_age_report"
             },
-            "services": {
-                "title": "Service Interactions",
-                "icon": "",
-                "description": "Analysis of services interacting with documents"
+            "modification_analysis": {
+                "title": "Modification Patterns",
+                "description": "Analyze how frequently documents are updated over time",
+                "function": "render_modification_analysis_report"
             },
-            "messages": {
-                "title": "System Messages",
-                "icon": "",
-                "description": "Analysis of system messages related to documents"
+            "lifecycle_timeline": {
+                "title": "Document Timeline",
+                "description": "Visualize the complete timeline of document lifecycle events",
+                "function": "render_lifecycle_timeline_report"
+            }
+        }
+    },
+    "security_governance": {
+        "name": "Security & Governance",
+        "description": "Analyze permissions, access patterns, and compliance",
+        "reports": {
+            "permission_analysis": {
+                "title": "Permission Distribution",
+                "description": "Analyze how permissions are distributed across documents",
+                "function": "render_permission_analysis_report"
+            },
+            "access_patterns": {
+                "title": "Access Patterns",
+                "description": "Analyze when and how documents are accessed",
+                "function": "render_access_patterns_report"
             }
         }
     }
 }
 
-# Flat dictionary of all reports for backward compatibility
-REPORTS = {}
-for category in REPORT_CATEGORIES.values():
-    for report_id, report in category["reports"].items():
-        REPORTS[report_id] = report
+# Maintain backward compatibility with a flat dictionary
+# This maps old report keys to new report structure
+REPORTS = {
+    "overview": REPORT_CATEGORIES["dashboard"]["reports"]["overview"],
+    "objects": REPORT_CATEGORIES["content_analysis"]["reports"]["objects"],
+    "instances": REPORT_CATEGORIES["storage_structure"]["reports"]["instances"],
+    "folder_structure": REPORT_CATEGORIES["storage_structure"]["reports"]["folder_structure"],
+    "storage_sunburst": REPORT_CATEGORIES["storage_structure"]["reports"]["storage_sunburst"],
+    "file_distribution": REPORT_CATEGORIES["storage_structure"]["reports"]["file_distribution"],
+    "metadata_analysis": REPORT_CATEGORIES["content_analysis"]["reports"]["metadata"],
+    # Add new reports to the backward compatibility mapping
+    "document_age": REPORT_CATEGORIES["document_lifecycle"]["reports"]["document_age"],
+    "modification_analysis": REPORT_CATEGORIES["document_lifecycle"]["reports"]["modification_analysis"],
+    "lifecycle_timeline": REPORT_CATEGORIES["document_lifecycle"]["reports"]["lifecycle_timeline"],
+    "permission_analysis": REPORT_CATEGORIES["security_governance"]["reports"]["permission_analysis"],
+    "access_patterns": REPORT_CATEGORIES["security_governance"]["reports"]["access_patterns"]
+}

@@ -49,9 +49,21 @@ from modules.visualizations import (
 from modules.folder_analysis import (
     process_folder_paths, aggregate_by_folder,
     create_sunburst_chart, create_treemap_chart,
-    find_top_folders, format_size, create_hierarchical_bar_chart
+    find_top_folders, format_size, create_hierarchical_bar_chart,
+    get_folder_statistics
 )
 from modules.metadata_analysis import render_metadata_analysis_dashboard
+from modules.document_lifecycle import (
+    analyze_document_age, analyze_modification_frequency,
+    analyze_document_lifecycle_events,
+    plot_document_age_distribution, plot_modification_frequency,
+    plot_lifecycle_timeline
+)
+from modules.security_governance import (
+    analyze_permissions, analyze_access_patterns,
+    plot_permission_distribution, plot_access_heatmap,
+    plot_access_gap
+)
 
 # Get base64 encoded image for favicon
 def get_base64_encoded_image(image_path):
@@ -63,13 +75,103 @@ def get_base64_encoded_image(image_path):
 # This replaces the default Streamlit logo with the Aparavi branding in the browser tab
 favicon = get_base64_encoded_image(os.path.join(config.IMAGES_DIR, "logo-48x48.png"))
 
-# Set page configuration with Aparavi branding
+# Set custom page config with favicon
 st.set_page_config(
-    page_title=config.APP_TITLE,  # Sets browser tab title to "Aparavi Reporting Dashboard"
-    page_icon=f"data:image/png;base64,{favicon}",  # Sets Aparavi logo as favicon
-    layout=config.PAGE_LAYOUT,  # Wide layout for better visualization
-    initial_sidebar_state=config.SIDEBAR_STATE  # Start with sidebar expanded
+    page_title=config.APP_TITLE,
+    page_icon=f"data:image/png;base64,{favicon}",
+    layout=config.PAGE_LAYOUT,
+    initial_sidebar_state=config.SIDEBAR_STATE
 )
+
+# Add dark mode compatibility with custom CSS
+def apply_custom_css():
+    """Apply custom CSS for dark mode compatibility and consistent styling"""
+    st.markdown("""
+    <style>
+        /* Force text color for dark mode compatibility */
+        .stMarkdown, .stDataFrame, .stTable, p, div, span, h1, h2, h3, h4, h5, h6 {
+            color: #FFFFFF !important;
+        }
+        
+        /* Ensure tables are visible in dark mode */
+        .dataframe {
+            color: #FFFFFF !important;
+        }
+        
+        /* Style dataframe headers */
+        .dataframe th {
+            background-color: #333333 !important;
+            color: #FFFFFF !important;
+            font-weight: bold !important;
+        }
+        
+        /* Style section headers with Aparavi branding */
+        .section-header {
+            color: #EF4E0A !important;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(239, 78, 10, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        /* Make metrics visible in dark mode */
+        .stMetric label {
+            color: #FFFFFF !important;
+        }
+        
+        .stMetric [data-testid="stMetricValue"] {
+            color: #FFFFFF !important;
+            font-weight: bold;
+        }
+        
+        /* Styling for Aparavi brand elements */
+        .aparavi-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .aparavi-logo {
+            margin-right: 1rem;
+        }
+        
+        .aparavi-title {
+            color: #EF4E0A !important;
+            font-weight: 600;
+        }
+        
+        /* Welcome message with enhanced visibility */
+        .welcome-message {
+            color: #FFFFFF !important;
+            background-color: rgba(239, 78, 10, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #EF4E0A;
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        /* Ensure buttons are visible */
+        .stButton button {
+            color: #FFFFFF !important;
+            background-color: #EF4E0A !important;
+            border: none !important;
+        }
+        
+        .stButton button:hover {
+            background-color: #d43d00 !important;
+        }
+        
+        /* Fix sidebar text */
+        .css-1d391kg, .css-1lcbmhc {
+            color: #FFFFFF !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Apply custom CSS for dark mode compatibility
+apply_custom_css()
 
 # Custom CSS to implement Aparavi branding and styling throughout the application
 # This CSS overrides the default Streamlit styling with Aparavi's brand colors and UI elements
@@ -174,9 +276,10 @@ def render_header():
     # Welcome message with explicit reference to Aparavi Data Suite
     # Using the report-header class styled with Aparavi's colors and border accents
     st.markdown("""
-    <div class="report-header">
-    <p>Welcome to the Aparavi Reporting Dashboard, providing comprehensive analytics and visualization of document management data from Aparavi Data Suite. 
-    Analyze file types, storage patterns, permissions, and more to gain insights into your document ecosystem.</p>
+    <div class="welcome-message">
+        <strong>Welcome to the Aparavi Reporting Dashboard</strong>, providing comprehensive analytics 
+        and visualization of document management data from Aparavi Data Suite. Analyze file types, 
+        storage patterns, permissions, and more to gain insights into your document ecosystem.
     </div>
     """, unsafe_allow_html=True)
 
@@ -988,6 +1091,257 @@ def render_metadata_analysis_report(db):
     # Call the render function from the metadata_analysis module
     render_metadata_analysis_dashboard(db)
 
+def render_document_age_report(db):
+    """Render document age analysis report"""
+    st.markdown("<h2 class='section-header'>Document Aging Analysis</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    This report analyzes the age distribution of documents in your system, helping you identify
+    data lifecycle patterns and potential opportunities for archiving or cleanup.
+    """)
+    
+    # Add loading indicator
+    with st.spinner("Analyzing document age distribution..."):
+        try:
+            # Get document age analysis data
+            age_data = analyze_document_age(db)
+            
+            if not age_data['summary'].empty:
+                # Display key metrics
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric("Oldest Document", f"{age_data['oldest_age']:.1f} years")
+                with col2:
+                    st.metric("Average Age", f"{age_data['average_age']:.1f} years")
+                with col3:
+                    st.metric("Documents Created Last Month", age_data['created_last_month'])
+                
+                # Plot age distribution
+                st.markdown("#### Document Age Distribution")
+                fig = plot_document_age_distribution(age_data['age_distribution'])
+                st.pyplot(fig)
+                
+                # Display age category breakdown
+                st.markdown("#### Documents by Age Category")
+                st.dataframe(age_data['summary'])
+                
+                # Plot creation timeline
+                if not age_data['creation_timeline'].empty:
+                    st.markdown("#### Document Creation Timeline")
+                    creation_fig = plot_time_series(
+                        age_data['creation_timeline'],
+                        'date', 'count',
+                        "Documents Created Over Time",
+                        height=400
+                    )
+                    st.plotly_chart(creation_fig, use_container_width=True)
+            else:
+                st.info("No document age data available. This may be due to missing creation date information.")
+                
+        except Exception as e:
+            st.error(f"Error analyzing document ages: {e}")
+            st.info("This report requires valid creation dates in the database.")
+
+def render_modification_analysis_report(db):
+    """Render document modification patterns report"""
+    st.markdown("<h2 class='section-header'>Modification Patterns</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    This report analyzes how frequently documents are updated in your system, helping you
+    identify active vs. static content and understand document workflow patterns.
+    """)
+    
+    # Add loading indicator
+    with st.spinner("Analyzing document modification patterns..."):
+        try:
+            # Get modification frequency analysis
+            mod_data = analyze_modification_frequency(db)
+            
+            if not mod_data['summary'].empty:
+                # Display key metrics
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric("Recently Modified", f"{mod_data['recently_modified']} documents")
+                with col2:
+                    st.metric("Frequently Modified", f"{mod_data['frequently_modified']} documents")
+                with col3:
+                    st.metric("Never Modified", f"{mod_data['never_modified']} documents")
+                
+                # Plot modification frequency
+                st.markdown("#### Modification Frequency Distribution")
+                fig = plot_modification_frequency(mod_data['frequency_distribution'])
+                st.pyplot(fig)
+                
+                # Display modification frequency breakdown
+                st.markdown("#### Documents by Modification Frequency")
+                st.dataframe(mod_data['summary'])
+                
+                # Plot modification timeline if available
+                if 'modification_timeline' in mod_data and not mod_data['modification_timeline'].empty:
+                    st.markdown("#### Document Modification Timeline")
+                    mod_fig = plot_time_series(
+                        mod_data['modification_timeline'],
+                        'date', 'count',
+                        "Documents Modified Over Time",
+                        height=400
+                    )
+                    st.plotly_chart(mod_fig, use_container_width=True)
+            else:
+                st.info("No document modification data available. This may be due to missing modification timestamps.")
+                
+        except Exception as e:
+            st.error(f"Error analyzing modification patterns: {e}")
+            st.info("This report requires valid modification timestamps in the database.")
+
+def render_lifecycle_timeline_report(db):
+    """Render document lifecycle timeline report"""
+    st.markdown("<h2 class='section-header'>Document Timeline</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    This report visualizes the complete timeline of document lifecycle events, from creation through
+    modifications, access, and other key events.
+    """)
+    
+    # Add loading indicator
+    with st.spinner("Generating document lifecycle timeline..."):
+        try:
+            # Get lifecycle events analysis
+            lifecycle_data = analyze_document_lifecycle_events(db)
+            
+            if not lifecycle_data['events'].empty:
+                # Display key metrics
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric("Total Documents", lifecycle_data['total_documents'])
+                with col2:
+                    st.metric("Total Events", lifecycle_data['total_events'])
+                with col3:
+                    st.metric("Active Documents", lifecycle_data['active_documents'])
+                
+                # Plot lifecycle timeline
+                st.markdown("#### Document Lifecycle Timeline")
+                fig = plot_lifecycle_timeline(lifecycle_data['events'])
+                st.pyplot(fig)
+                
+                # Display event type breakdown
+                if 'event_types' in lifecycle_data and not lifecycle_data['event_types'].empty:
+                    st.markdown("#### Event Type Distribution")
+                    event_fig = plot_pie_chart(
+                        lifecycle_data['event_types'],
+                        'event_type', 'count',
+                        "Document Events by Type"
+                    )
+                    st.plotly_chart(event_fig, use_container_width=True)
+                    
+                # Display recent events sample
+                if 'recent_events' in lifecycle_data and not lifecycle_data['recent_events'].empty:
+                    st.markdown("#### Recent Document Events")
+                    st.dataframe(lifecycle_data['recent_events'])
+            else:
+                st.info("No document lifecycle event data available. This may be due to missing event timestamps.")
+                
+        except Exception as e:
+            st.error(f"Error analyzing document lifecycle: {e}")
+            st.info("This report requires valid document event data in the database.")
+
+def render_permission_analysis_report(db):
+    """Render permission distribution analysis report"""
+    st.markdown("<h2 class='section-header'>Permission Distribution</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    This report analyzes how permissions are distributed across documents in your system, helping you
+    understand your security posture and identify potential permission issues.
+    """)
+    
+    # Add loading indicator
+    with st.spinner("Analyzing permission distribution..."):
+        try:
+            # Get permission distribution analysis
+            perm_data = analyze_permissions(db)
+            
+            if not perm_data['permissions'].empty:
+                # Plot permission distribution
+                st.markdown("#### Document Permission Types")
+                fig = plot_permission_distribution(perm_data['permissions'])
+                st.pyplot(fig)
+                
+                # Display permission distribution details
+                st.markdown("#### Permission Distribution Details")
+                st.dataframe(perm_data['permissions'])
+                
+                # Display owner distribution if available
+                if 'owners' in perm_data and not perm_data['owners'].empty:
+                    st.markdown("#### Top Document Owners")
+                    owner_fig = plot_bar_chart(
+                        perm_data['owners'],
+                        'owner', 'count',
+                        "Top Document Owners",
+                        horizontal=True,
+                        height=400
+                    )
+                    st.plotly_chart(owner_fig, use_container_width=True)
+                
+                # Display security entity distribution if available
+                if 'security' in perm_data and not perm_data['security'].empty:
+                    st.markdown("#### Security Entity Distribution")
+                    security_fig = plot_bar_chart(
+                        perm_data['security'],
+                        'security_entity', 'count',
+                        "Top Security Entities",
+                        horizontal=True,
+                        height=400
+                    )
+                    st.plotly_chart(security_fig, use_container_width=True)
+            else:
+                st.info("No permission distribution data available. This may be due to missing permission information.")
+                
+        except Exception as e:
+            st.error(f"Error analyzing permission distribution: {e}")
+            st.info("This report requires valid permission data in the database.")
+
+def render_access_patterns_report(db):
+    """Render access pattern analysis report"""
+    st.markdown("<h2 class='section-header'>Access Patterns</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    This report analyzes when and how documents are accessed in your system, helping you
+    understand usage patterns and identify potential optimization opportunities.
+    """)
+    
+    # Add loading indicator
+    with st.spinner("Analyzing access patterns..."):
+        try:
+            # Get access pattern analysis
+            access_data = analyze_access_patterns(db)
+            
+            if not access_data['hourly'].empty:
+                # Plot hourly access heatmap
+                st.markdown("#### Access Patterns by Hour of Day")
+                fig = plot_access_heatmap(access_data['hourly'])
+                st.pyplot(fig)
+                
+                # Display hourly access details
+                st.markdown("#### Hourly Access Details")
+                st.dataframe(access_data['hourly'])
+                
+                # Display daily access distribution if available
+                if 'daily' in access_data and not access_data['daily'].empty and 'day_name' in access_data['daily'].columns:
+                    st.markdown("#### Access Patterns by Day of Week")
+                    daily_fig = plot_bar_chart(
+                        access_data['daily'],
+                        'day_name', 'access_count',
+                        "Document Access by Day of Week",
+                        height=400
+                    )
+                    st.plotly_chart(daily_fig, use_container_width=True)
+                
+                # Display access gap analysis if available
+                if 'access_gap' in access_data and not access_data['access_gap'].empty:
+                    st.markdown("#### Time Between Creation and First Access")
+                    gap_fig = plot_access_gap(access_data['access_gap'])
+                    st.pyplot(gap_fig)
+            else:
+                st.info("No access pattern data available. This may be due to missing access timestamps.")
+                
+        except Exception as e:
+            st.error(f"Error analyzing access patterns: {e}")
+            st.info("This report requires valid access timestamp data in the database.")
+
 def render_report(db, selected_report):
     """Render the selected report"""
     if selected_report == "overview":
@@ -1004,6 +1358,16 @@ def render_report(db, selected_report):
         render_file_distribution_report(db)
     elif selected_report == "metadata_analysis":
         render_metadata_analysis_report(db)
+    elif selected_report == "document_age":
+        render_document_age_report(db)
+    elif selected_report == "modification_analysis":
+        render_modification_analysis_report(db)
+    elif selected_report == "lifecycle_timeline":
+        render_lifecycle_timeline_report(db)
+    elif selected_report == "permission_analysis":
+        render_permission_analysis_report(db)
+    elif selected_report == "access_patterns":
+        render_access_patterns_report(db)
     else:
         # Display placeholder for other reports
         report_info = config.REPORTS[selected_report]
