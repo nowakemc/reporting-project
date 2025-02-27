@@ -1,5 +1,5 @@
 """
-DuckDB Document Management Analyzer - Main Application
+Aparavi Reporting Dashboard - Main Application
 """
 
 import streamlit as st
@@ -9,6 +9,7 @@ from datetime import datetime
 import time
 import json
 import plotly.express as px
+import base64
 
 # Import configuration
 import config
@@ -24,6 +25,7 @@ from modules.folder_analysis import (
     create_sunburst_chart, create_treemap_chart,
     find_top_folders, format_size, create_hierarchical_bar_chart
 )
+from modules.metadata_analysis import render_metadata_analysis_dashboard
 
 # Set page configuration
 st.set_page_config(
@@ -38,19 +40,38 @@ st.markdown("""
 <style>
     .main-header {
         font-size: 2.5rem;
+        font-weight: 700;
+        color: #080A0D;
         margin-bottom: 1rem;
+    }
+    .aparavi-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    .aparavi-logo {
+        max-width: 255px;
+        margin-bottom: 1rem;
+    }
+    .report-header {
+        background-color: #F9F9FB;
+        padding: 1.5rem;
+        border-radius: 5px;
+        border-left: 5px solid #EF4E0A;
+        margin-bottom: 2rem;
     }
     .section-header {
-        font-size: 1.8rem;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: #4682B4;
+        color: #51565D;
+        border-bottom: 2px solid #56BBCC;
+        padding-bottom: 0.5rem;
     }
-    .subsection-header {
-        font-size: 1.4rem;
-        margin-top: 1.5rem;
-        margin-bottom: 0.75rem;
-        color: #4682B4;
+    .stButton>button {
+        background-color: #EF4E0A;
+        color: white;
+    }
+    .stButton>button:hover {
+        background-color: #d43d00;
+        color: white;
     }
     .metric-container {
         background-color: #f8f9fa;
@@ -77,22 +98,41 @@ def get_database_connection(db_path):
     """Get a cached database connection"""
     return DatabaseManager(db_path)
 
+def get_base64_encoded_image(image_path):
+    """Get base64 encoded image for embedding in HTML"""
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
 def render_header():
     """Render application header and description"""
+    # Display Aparavi logo
+    st.markdown(f"""
+    <div class="aparavi-header">
+        <img src="data:image/png;base64,{get_base64_encoded_image(config.APP_LOGO)}" class="aparavi-logo" alt="Aparavi Logo">
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Display application title
     st.markdown(f"<h1 class='main-header'>{config.APP_TITLE}</h1>", unsafe_allow_html=True)
     
-    st.success("Welcome to the newly organized DuckDB Document Management Analyzer!")
-    
+    # Welcome message with Aparavi branding
     st.markdown("""
-    This application provides comprehensive analytics and visualization of document management data 
-    stored in a DuckDB database. Analyze file types, storage patterns, permissions, and more to gain 
-    insights into your document ecosystem.
-    """)
+    <div class="report-header">
+    <p>Welcome to the Aparavi Reporting Dashboard, providing comprehensive analytics and visualization of document management data. 
+    Analyze file types, storage patterns, permissions, and more to gain insights into your document ecosystem.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 def render_sidebar():
     """Render sidebar with navigation and options"""
     with st.sidebar:
-        st.markdown("# 🦆")
+        # Logo in sidebar
+        st.markdown(f"""
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <img src="data:image/png;base64,{get_base64_encoded_image(config.IMAGES_DIR / 'logo-90x90.png')}" width="90" alt="Aparavi Logo">
+        </div>
+        """, unsafe_allow_html=True)
+        
         st.markdown("## Navigation")
         
         # Database selector
@@ -104,7 +144,7 @@ def render_sidebar():
         
         # Report selection
         report_options = list(config.REPORTS.keys())
-        report_labels = [f"{config.REPORTS[r]['icon']} {config.REPORTS[r]['title']}" for r in report_options]
+        report_labels = [f"{config.REPORTS[r]['title']}" for r in report_options]
         
         selected_report_label = st.radio("Select Report", report_labels)
         selected_report = report_options[report_labels.index(selected_report_label)]
@@ -126,10 +166,10 @@ def render_sidebar():
         # About section
         st.markdown("---")
         st.markdown("### About")
-        st.markdown("""
-        **DuckDB Document Analyzer**  
+        st.markdown(f"""
+        **Aparavi Reporting Dashboard**  
         Version 1.1.0  
-        2025 - Built with Streamlit and DuckDB
+        {datetime.now().year} - Aparavi Data Intelligence & Automation
         """)
         
     return {
@@ -284,7 +324,7 @@ def render_overview_report(db):
                 st.pyplot(fig)
         except Exception as e:
             st.warning(f"Could not generate service distribution: {e}")
-    
+
 def render_objects_report(db):
     """Render objects analysis report"""
     st.markdown("<h2 class='section-header'>Objects Analysis</h2>", unsafe_allow_html=True)
@@ -392,7 +432,7 @@ def render_objects_report(db):
 
 def render_instances_report(db):
     """Render instances and storage analysis report"""
-    st.markdown("<h2 class='section-header'>Instances & Storage Analysis</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='section-header'>Instances & Storage</h2>", unsafe_allow_html=True)
     
     # Storage statistics
     st.markdown("<h3 class='subsection-header'>Storage Statistics</h3>", unsafe_allow_html=True)
@@ -492,7 +532,7 @@ def render_instances_report(db):
 
 def render_folder_structure_report(db):
     """Render folder structure analysis report"""
-    st.markdown("<h2 class='section-header'>Folder Structure Analysis</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='section-header'>Folder Structure</h2>", unsafe_allow_html=True)
     
     # Query parent paths data
     parent_paths_df = db.query("""
@@ -625,7 +665,7 @@ def render_folder_structure_report(db):
 
 def render_storage_sunburst_report(db):
     """Render storage sunburst visualization report"""
-    st.markdown("<h2 class='section-header'>Storage Sunburst Analysis</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='section-header'>Storage Sunburst</h2>", unsafe_allow_html=True)
     
     # Query objects with size data
     objects_with_size = db.query("""
@@ -727,7 +767,7 @@ def render_storage_sunburst_report(db):
 
 def render_file_distribution_report(db):
     """Render file distribution analysis report"""
-    st.markdown("<h2 class='section-header'>File Distribution Analysis</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='section-header'>File Distribution</h2>", unsafe_allow_html=True)
     
     # Query file extension data
     file_extensions = db.query("""
@@ -834,6 +874,15 @@ def render_file_distribution_report(db):
     else:
         st.info("Not enough folder data to visualize distribution.")
 
+def render_metadata_analysis_report(db):
+    """Render metadata analysis report"""
+    report_info = config.REPORTS["metadata_analysis"]
+    st.markdown(f"<h2 class='section-header'>{report_info['title']}</h2>", unsafe_allow_html=True)
+    st.markdown(report_info['description'])
+    
+    # Call the render function from the metadata_analysis module
+    render_metadata_analysis_dashboard(db)
+
 def render_report(db, selected_report):
     """Render the selected report"""
     if selected_report == "overview":
@@ -848,10 +897,12 @@ def render_report(db, selected_report):
         render_storage_sunburst_report(db)
     elif selected_report == "file_distribution":
         render_file_distribution_report(db)
+    elif selected_report == "metadata_analysis":
+        render_metadata_analysis_report(db)
     else:
         # Display placeholder for other reports
         report_info = config.REPORTS[selected_report]
-        st.markdown(f"<h2 class='section-header'>{report_info['icon']} {report_info['title']}</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h2 class='section-header'>{report_info['title']}</h2>", unsafe_allow_html=True)
         st.markdown(report_info['description'])
         st.info("This report is under development and will be available in a future release.")
 
