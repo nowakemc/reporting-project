@@ -49,19 +49,60 @@ class DatabaseManager:
         schema = self.conn.execute(f"PRAGMA table_info('{table_name}')").fetchdf()
         return schema
     
-    def query(self, sql, params=None):
-        """Execute a SQL query.
+    def query(self, query_str, params=None):
+        """Execute query and return pandas DataFrame.
         
         Args:
-            sql (str): SQL query to execute
-            params (tuple, optional): Query parameters
+            query_str (str): SQL query string
+            params (dict, optional): Parameters for query
             
         Returns:
-            DataFrame: Query results
+            pandas.DataFrame: Result of query
         """
-        if params:
-            return self.conn.execute(sql, params).fetchdf()
-        return self.conn.execute(sql).fetchdf()
+        try:
+            if params:
+                result = self.conn.execute(query_str, params).fetchdf()
+            else:
+                result = self.conn.execute(query_str).fetchdf()
+            return result
+        except Exception as e:
+            print(f"Error executing query: {e}")
+            return pd.DataFrame()
+    
+    def safe_query(self, query_str, fallback_query=None, params=None):
+        """Execute query with a fallback option if the primary query fails.
+        
+        Args:
+            query_str (str): Primary SQL query string
+            fallback_query (str, optional): Fallback SQL query if primary fails
+            params (dict, optional): Parameters for query
+            
+        Returns:
+            pandas.DataFrame: Result of query
+        """
+        try:
+            return self.query(query_str, params)
+        except Exception as e:
+            print(f"Primary query failed: {e}")
+            if fallback_query:
+                try:
+                    return self.query(fallback_query, params)
+                except Exception as e:
+                    print(f"Fallback query also failed: {e}")
+            return pd.DataFrame()
+    
+    def get_version(self):
+        """Get DuckDB version information.
+        
+        Returns:
+            str: DuckDB version
+        """
+        try:
+            version_info = self.conn.execute("SELECT version()").fetchone()[0]
+            return version_info
+        except Exception as e:
+            print(f"Error getting version: {e}")
+            return "Unknown"
     
     def get_row_count(self, table_name):
         """Get row count for a table.
