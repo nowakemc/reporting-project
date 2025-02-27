@@ -1,5 +1,5 @@
 """
-Configuration settings for the DuckDB Document Analysis app.
+Configuration settings for the Aparavi Reporting Dashboard.
 """
 
 import os
@@ -8,6 +8,7 @@ from pathlib import Path
 # Base paths
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
+IMAGES_DIR = BASE_DIR / "images"
 
 # Default database path
 DEFAULT_DB_PATH = str(BASE_DIR / "sample.duckdb")
@@ -16,8 +17,8 @@ DEFAULT_DB_PATH = str(BASE_DIR / "sample.duckdb")
 CACHE_TTL = 3600  # Cache time to live in seconds
 
 # UI Configuration
-APP_TITLE = "DuckDB Document Management Analyzer"
-APP_ICON = "📊"
+APP_TITLE = "Aparavi Reporting Dashboard"
+APP_LOGO = str(IMAGES_DIR / "logo-255x115.png")
 PAGE_LAYOUT = "wide"
 SIDEBAR_STATE = "expanded"
 
@@ -29,11 +30,24 @@ CHART_THEME = "streamlit"  # Options: streamlit, plotly, etc.
 DEFAULT_CHART_WIDTH = 700
 DEFAULT_CHART_HEIGHT = 400
 
-# Color schemes
+# Aparavi Colors from brand guidelines
+# Main colors: #EF4E0A (orange), #56BBCC (teal), with supporting colors
+APARAVI_COLORS = {
+    "primary": "#EF4E0A",  # Orange
+    "secondary": "#56BBCC",  # Teal
+    "dark": "#080A0D",  # Dark (almost black)
+    "light": "#F9F9FB",  # Light (off-white)
+    "gray": "#51565D",  # Medium gray
+    "light_gray": "#9BA0A4",  # Light gray
+    "blue": "#617698",  # Blue
+    "teal_light": "#AED0D5"  # Light teal
+}
+
+# Color schemes for charts
 CHART_COLORS = {
-    "primary": ["#FF4B4B", "#6272A4", "#8BE9FD", "#50FA7B", "#FFB86C", "#FF79C6", "#BD93F9"],
-    "categorical": ["#636EFA", "#EF553B", "#00CC96", "#AB63FA", "#FFA15A", "#19D3F3", "#FF6692"],
-    "sequential": ["#0d0887", "#46039f", "#7201a8", "#9c179e", "#bd3786", "#d8576b", "#ed7953", "#fb9f3a", "#fdca26", "#f0f921"],
+    "primary": ["#EF4E0A", "#56BBCC", "#617698", "#AED0D5", "#9BA0A4", "#51565D"],
+    "categorical": ["#EF4E0A", "#56BBCC", "#617698", "#080A0D", "#9BA0A4", "#AED0D5"],
+    "sequential": ["#F9F9FB", "#AED0D5", "#56BBCC", "#617698", "#51565D", "#080A0D"]
 }
 
 # Export configuration
@@ -44,52 +58,57 @@ MAX_EXPORT_ROWS = 100000  # Maximum number of rows to export
 REPORTS = {
     "overview": {
         "title": "Dashboard Overview",
-        "icon": "📈",
+        "icon": "",
         "description": "High-level overview of document management statistics"
     },
     "objects": {
         "title": "Objects Analysis",
-        "icon": "📄",
+        "icon": "",
         "description": "Analysis of document objects and their properties"
     },
     "instances": {
         "title": "Instances & Storage",
-        "icon": "💾",
+        "icon": "",
         "description": "Analysis of document instances and storage metrics"
     },
     "classifications": {
         "title": "Classifications",
-        "icon": "🏷️",
+        "icon": "",
         "description": "Analysis of document classifications and categories"
     },
     "permissions": {
         "title": "Security & Permissions",
-        "icon": "🔒",
+        "icon": "",
         "description": "Analysis of document permissions and access controls"
     },
     "services": {
         "title": "Services",
-        "icon": "🔧",
+        "icon": "",
         "description": "Analysis of services interacting with documents"
     },
     "messages": {
         "title": "Messages",
-        "icon": "💬",
+        "icon": "",
         "description": "Analysis of message data related to documents"
     },
     "folder_structure": {
         "title": "Folder Structure",
-        "icon": "📁",
+        "icon": "",
         "description": "Visualization and analysis of folder hierarchies"
     },
     "storage_sunburst": {
         "title": "Storage Sunburst",
-        "icon": "🔆",
+        "icon": "",
         "description": "Interactive sunburst visualization of storage usage by folder"
     },
     "file_distribution": {
         "title": "File Distribution",
-        "icon": "📊",
+        "icon": "",
         "description": "Distribution of files across folder hierarchy"
+    },
+    "metadata_analysis": {
+        "title": "Metadata Analysis",
+        "icon": "",
+        "description": "Analysis and comparison of metadata across different file types"
     }
 }

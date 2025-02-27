@@ -1,0 +1,137 @@
+@startuml
+skinparam linetype ortho
+entity "classifications" {
+  * classificationId : BIGINT <<PK>>
+  nodeObjectId : VARCHAR [NN]
+  classificationKey : VARCHAR [NN]
+  classificationSet : VARCHAR [NN]
+  createdAt : BIGINT
+  updatedAt : BIGINT
+}
+entity "datasets" {
+  * datasetId : BIGINT <<PK>>
+  nodeObjectId : VARCHAR [NN]
+  name : VARCHAR [NN]
+  mode : BIGINT [NN]
+  createdAt : BIGINT
+  updatedAt : BIGINT
+}
+entity "encryption" {
+  * encryptionId : BIGINT <<PK>>
+  nodeObjectId : VARCHAR [NN]
+  name : VARCHAR [NN]
+  keyId : VARCHAR [NN]
+  token : VARCHAR [NN]
+  createdAt : BIGINT
+  updatedAt : BIGINT
+}
+entity "instances" {
+  * instanceId : BIGINT <<PK>>
+  objectId : VARCHAR
+  tags : VARCHAR
+  messageIds : VARCHAR
+  flags : BIGINT [NN]
+  batchId : BIGINT
+  processTime : BIGINT
+  processPipe : VARCHAR
+  size : BIGINT
+  attrib : BIGINT
+  changeKey : VARCHAR
+  createTime : BIGINT
+  modifyTime : BIGINT
+  accessTime : BIGINT
+  storeTime : BIGINT
+  storeSize : BIGINT
+  version : BIGINT
+  metadata : VARCHAR
+  classificationId : BIGINT
+  storeBatchId : BIGINT
+  wordBatchId : BIGINT
+  vectorBatchId : BIGINT
+  encryptionId : BIGINT
+  serviceId : BIGINT
+  componentId : VARCHAR
+  tagSetId : BIGINT
+  datasetId : BIGINT
+  docModifyTime : BIGINT
+  docModifier : VARCHAR
+  docCreateTime : BIGINT
+  docCreator : VARCHAR
+  deletedAt : BIGINT
+}
+entity "messages" {
+  * messageId : BIGINT <<PK>>
+  messageGuid : VARCHAR
+  messageTime : BIGINT [NN]
+  message : VARCHAR [NN]
+}
+entity "objects" {
+  * objectId : VARCHAR <<PK>>
+  parentId : VARCHAR [NN]
+  classId : VARCHAR [NN]
+  uniqueName : VARCHAR [NN]
+  name : VARCHAR [NN]
+  flags : BIGINT [NN]
+  tags : VARCHAR
+  messageIds : VARCHAR
+  permissionId : BIGINT
+  nodeObjectId : VARCHAR
+  batchId : BIGINT
+  primarySize : BIGINT
+  createdAt : BIGINT
+  updatedAt : BIGINT
+  extension : VARCHAR
+  uniqueId : VARCHAR
+}
+entity "osPermissions" {
+  * permissionId : BIGINT <<PK>>
+  nodeObjectId : VARCHAR [NN]
+  permissionSet : VARCHAR [NN]
+  createdAt : BIGINT
+  updatedAt : BIGINT
+}
+entity "osSecurity" {
+  * securityId : BIGINT <<PK>>
+  nodeObjectId : VARCHAR [NN]
+  osId : VARCHAR [NN]
+  isLocal : BIGINT [NN]
+  isGroup : BIGINT [NN]
+  members : VARCHAR
+  groups : VARCHAR
+  authority : VARCHAR [NN]
+  name : VARCHAR [NN]
+}
+entity "parentPaths" {
+  * parentId : VARCHAR <<PK>>
+  uri : VARCHAR
+  parentPath : VARCHAR
+}
+entity "services" {
+  * serviceId : BIGINT <<PK>>
+  nodeObjectId : VARCHAR [NN]
+  key : VARCHAR [NN]
+  mode : BIGINT [NN]
+  type : VARCHAR [NN]
+  name : VARCHAR [NN]
+  parameters : VARCHAR
+  accessDelay : BIGINT
+  accessRate : FLOAT
+  accessCost : FLOAT
+  storeCost : FLOAT
+  createdAt : BIGINT
+  updatedAt : BIGINT
+  deletedAt : BIGINT
+}
+entity "tagSets" {
+  * tagSetId : BIGINT <<PK>>
+  tagSet : VARCHAR [NN]
+}
+classifications ||--o{ instances : "classificationId"
+datasets ||--o{ instances : "datasetId"
+encryption ||--o{ instances : "encryptionId"
+objects ||--o{ instances : "objectId"
+osPermissions ||--o{ objects : "permissionId"
+parentPaths ||--o{ objects : "parentId"
+services ||--o{ instances : "serviceId"
+tagSets ||--o{ instances : "tagSetId"
+@enduml
