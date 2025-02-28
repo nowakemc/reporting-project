@@ -36,6 +36,7 @@ import json
 import plotly.express as px
 import base64
 from PIL import Image
+from modules.large_scale import *  # Import large scale handling module
 
 # Import configuration
 import config
@@ -252,6 +253,125 @@ def get_database_connection(db_path):
     """Get a cached database connection"""
     return DatabaseManager(db_path)
 
+def detect_scale(db_conn):
+    """Detect the scale of the database"""
+    object_count = db_conn.get_row_count('objects')
+    if object_count < 10000:
+        scale = "small"
+        recommendations = []
+    elif object_count < 100000:
+        scale = "medium"
+        recommendations = ["Create indexes for improved performance"]
+    elif object_count < 1000000:
+        scale = "large"
+        recommendations = ["Create indexes for improved performance", "Optimize DuckDB for large datasets"]
+    else:
+        scale = "very_large"
+        recommendations = ["Create indexes for improved performance", "Optimize DuckDB for large datasets", "Consider distributed database setup"]
+    
+    return {
+        "scale": scale,
+        "object_count": object_count,
+        "recommendations": recommendations
+    }
+
+def render_scale_info(db_conn):
+    """Render scale information and recommendations"""
+    scale_info = detect_scale(db_conn)
+    
+    st.markdown(f"<h3 class='subsection-header'>Database Scale Information</h3>", unsafe_allow_html=True)
+    
+    # Display object count
+    st.metric("Total Objects", f"{scale_info['object_count']:,}")
+    
+    # Scale category
+    scale_category = scale_info['scale'].replace("_", " ").title()
+    st.info(f"Scale Category: **{scale_category}**")
+    
+    # Add database size information
+    import os
+    db_size_bytes = os.path.getsize(db_conn.db_path)
+    db_size_mb = db_size_bytes / (1024 * 1024)
+    st.metric("Database Size", f"{db_size_mb:.2f} MB")
+    
+    # Show recommendations for scaling
+    if scale_info['recommendations']:
+        st.subheader("Scaling Recommendations")
+        for i, rec in enumerate(scale_info['recommendations']):
+            st.markdown(f"{i+1}. {rec}")
+        
+        # Add optimization buttons for medium/large scale
+        if scale_info['scale'] in ["medium", "large", "very_large"]:
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                if st.button("Create Indexes"):
+                    with st.spinner("Creating indexes for improved performance..."):
+                        success = create_indexes(db_conn)
+                        if success:
+                            st.success("Indexes created successfully!")
+                        else:
+                            st.error("Error creating indexes.")
+            
+            with col2:
+                if st.button("Optimize DuckDB"):
+                    with st.spinner("Optimizing DuckDB for large datasets..."):
+                        db_conn = configure_duckdb_for_scale(db_conn)
+                        st.success("DuckDB optimized for scale!")
+            
+            with col3:
+                # Add Optimize Database button with size threshold of 50MB
+                if st.button("Optimize Database File"):
+                    with st.spinner("Creating optimized database copy..."):
+                        # Define size threshold for optimization (50MB)
+                        size_threshold_mb = 50
+                        
+                        # Show progress message
+                        progress_text = st.empty()
+                        progress_text.text("Analyzing database...")
+                        
+                        # Run optimization
+                        result = optimize_database_file(db_conn.db_path, size_threshold_mb)
+                        
+                        # Display results
+                        if result['optimized']:
+                            progress_text.empty()
+                            
+                            # Format time nicely
+                            time_seconds = result['time_seconds']
+                            if time_seconds < 60:
+                                time_str = f"{time_seconds:.1f} seconds"
+                            else:
+                                minutes = int(time_seconds // 60)
+                                seconds = time_seconds % 60
+                                time_str = f"{minutes} min {seconds:.1f} sec"
+                            
+                            # Create metrics summary
+                            metrics_col1, metrics_col2 = st.columns(2)
+                            
+                            with metrics_col1:
+                                st.metric("Original Size", f"{result['original_size_mb']:.2f} MB")
+                                st.metric("Time Taken", time_str)
+                            
+                            with metrics_col2:
+                                st.metric("Optimized Size", f"{result['optimized_size_mb']:.2f} MB")
+                                st.metric("Size Reduction", f"{result['size_reduction_percent']:.1f}%")
+                            
+                            # Success message with path info
+                            st.success(f"""
+                            Optimization complete! 
+                            
+                            New optimized database: `{result['optimized_path']}`
+                            Backup of original: `{result['backup_path']}`
+                            
+                            To use the optimized database, update your configuration or restart with the new file.
+                            """)
+                        else:
+                            if 'reason' in result:
+                                st.info(f"Optimization skipped: {result['reason']}")
+                            elif 'error' in result:
+                                st.error(f"Optimization failed: {result['error']}")
+
 def render_header():
     """
     Render application header and description
@@ -383,6 +503,9 @@ def render_sidebar():
 def render_overview_report(db):
     """Render overview dashboard with key metrics"""
     st.markdown("<h2 class='section-header'>Executive Summary</h2>", unsafe_allow_html=True)
+    
+    # Show scale information and recommendations if available
+    render_scale_info(db)
     
     # Key metrics row
     col1, col2, col3, col4 = st.columns(4)
