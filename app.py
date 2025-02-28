@@ -294,83 +294,79 @@ def render_scale_info(db_conn):
     db_size_mb = db_size_bytes / (1024 * 1024)
     st.metric("Database Size", f"{db_size_mb:.2f} MB")
     
+    # Show which database is being used
+    if 'using_optimized_db' in st.session_state and st.session_state['using_optimized_db']:
+        st.success(f"**Currently using optimized database:** `{db_conn.db_path}`")
+    else:
+        st.info(f"**Current database file:** `{db_conn.db_path}`")
+    
     # Show recommendations for scaling
     if scale_info['recommendations']:
         st.subheader("Scaling Recommendations")
         for i, rec in enumerate(scale_info['recommendations']):
             st.markdown(f"{i+1}. {rec}")
         
-        # Add optimization buttons for medium/large scale
+        # Add optimization button for medium/large scale
         if scale_info['scale'] in ["medium", "large", "very_large"]:
-            col1, col2, col3 = st.columns(3)
+            # Only provide the option that doesn't modify the original file
+            st.markdown("### Safe Database Optimization")
+            st.markdown("The following optimization creates a new optimized copy of your database with indexes without modifying the original file:")
             
-            with col1:
-                if st.button("Create Indexes"):
-                    with st.spinner("Creating indexes for improved performance..."):
-                        success = create_indexes(db_conn)
-                        if success:
-                            st.success("Indexes created successfully!")
+            if st.button("Optimize Database File (Creates Copy)"):
+                with st.spinner("Creating optimized database copy..."):
+                    # Define size threshold for optimization (50MB)
+                    size_threshold_mb = 50
+                    
+                    # Show progress message
+                    progress_text = st.empty()
+                    progress_text.text("Analyzing database...")
+                    
+                    # Run optimization
+                    result = optimize_database_file(db_conn.db_path, size_threshold_mb)
+                    
+                    # Display results
+                    if result['optimized']:
+                        progress_text.empty()
+                        
+                        # Format time nicely
+                        time_seconds = result['time_seconds']
+                        if time_seconds < 60:
+                            time_str = f"{time_seconds:.1f} seconds"
                         else:
-                            st.error("Error creating indexes.")
-            
-            with col2:
-                if st.button("Optimize DuckDB"):
-                    with st.spinner("Optimizing DuckDB for large datasets..."):
-                        db_conn = configure_duckdb_for_scale(db_conn)
-                        st.success("DuckDB optimized for scale!")
-            
-            with col3:
-                # Add Optimize Database button with size threshold of 50MB
-                if st.button("Optimize Database File"):
-                    with st.spinner("Creating optimized database copy..."):
-                        # Define size threshold for optimization (50MB)
-                        size_threshold_mb = 50
+                            minutes = int(time_seconds // 60)
+                            seconds = time_seconds % 60
+                            time_str = f"{minutes} min {seconds:.1f} sec"
                         
-                        # Show progress message
-                        progress_text = st.empty()
-                        progress_text.text("Analyzing database...")
+                        # Create metrics summary
+                        metrics_col1, metrics_col2 = st.columns(2)
                         
-                        # Run optimization
-                        result = optimize_database_file(db_conn.db_path, size_threshold_mb)
+                        with metrics_col1:
+                            st.metric("Original Size", f"{result['original_size_mb']:.2f} MB")
+                            st.metric("Time Taken", time_str)
                         
-                        # Display results
-                        if result['optimized']:
-                            progress_text.empty()
-                            
-                            # Format time nicely
-                            time_seconds = result['time_seconds']
-                            if time_seconds < 60:
-                                time_str = f"{time_seconds:.1f} seconds"
-                            else:
-                                minutes = int(time_seconds // 60)
-                                seconds = time_seconds % 60
-                                time_str = f"{minutes} min {seconds:.1f} sec"
-                            
-                            # Create metrics summary
-                            metrics_col1, metrics_col2 = st.columns(2)
-                            
-                            with metrics_col1:
-                                st.metric("Original Size", f"{result['original_size_mb']:.2f} MB")
-                                st.metric("Time Taken", time_str)
-                            
-                            with metrics_col2:
-                                st.metric("Optimized Size", f"{result['optimized_size_mb']:.2f} MB")
-                                st.metric("Size Reduction", f"{result['size_reduction_percent']:.1f}%")
-                            
-                            # Success message with path info
-                            st.success(f"""
-                            Optimization complete! 
-                            
-                            New optimized database: `{result['optimized_path']}`
-                            Backup of original: `{result['backup_path']}`
-                            
-                            To use the optimized database, update your configuration or restart with the new file.
-                            """)
-                        else:
-                            if 'reason' in result:
-                                st.info(f"Optimization skipped: {result['reason']}")
-                            elif 'error' in result:
-                                st.error(f"Optimization failed: {result['error']}")
+                        with metrics_col2:
+                            st.metric("Optimized Size", f"{result['optimized_size_mb']:.2f} MB")
+                            st.metric("Size Reduction", f"{result['size_reduction_percent']:.1f}%")
+                        
+                        # Success message with path info
+                        st.success(f"""
+                        Optimization complete! 
+                        
+                        New optimized database: `{result['optimized_path']}`
+                        Backup of original: `{result['backup_path']}`
+                        """)
+                        
+                        # Add option to switch to optimized database immediately
+                        if st.button("Switch to Optimized Database Now"):
+                            # Store the optimized DB path in session state
+                            st.session_state['db_path'] = result['optimized_path']
+                            st.session_state['using_optimized_db'] = True
+                            st.experimental_rerun()
+                    else:
+                        if 'reason' in result:
+                            st.info(f"Optimization skipped: {result['reason']}")
+                        elif 'error' in result:
+                            st.error(f"Optimization failed: {result['error']}")
 
 def render_header():
     """
@@ -402,6 +398,10 @@ def render_header():
         storage patterns, permissions, and more to gain insights into your document ecosystem.
     </div>
     """, unsafe_allow_html=True)
+    
+    # Show optimized database indicator if using one
+    if 'using_optimized_db' in st.session_state and st.session_state['using_optimized_db']:
+        st.success("✓ Using optimized database for improved performance")
 
 def render_sidebar():
     """
@@ -1508,7 +1508,12 @@ def main():
     
     # Connect to database
     try:
-        db = get_database_connection(options["db_path"])
+        if 'db_path' in st.session_state:
+            db_path = st.session_state['db_path']
+        else:
+            db_path = options["db_path"]
+        
+        db = get_database_connection(db_path)
         
         # Check connection
         tables = db.list_tables()

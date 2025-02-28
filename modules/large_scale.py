@@ -297,7 +297,7 @@ def detect_scale(db):
 
 def optimize_database_file(source_db_path, size_threshold_mb=100):
     """
-    Create an optimized copy of the database with indexes and compression
+    Create an optimized copy of the database with indexes
     if the database exceeds the specified size threshold.
     
     Args:
@@ -330,6 +330,18 @@ def optimize_database_file(source_db_path, size_threshold_mb=100):
     source_path = Path(source_db_path)
     optimized_path = source_path.parent / f"{source_path.stem}_optimized{source_path.suffix}"
     
+    # Delete the optimized database file if it already exists
+    if os.path.exists(optimized_path):
+        try:
+            os.remove(optimized_path)
+        except Exception as e:
+            return {
+                'optimized': False,
+                'error': f"Unable to remove existing optimized database: {str(e)}",
+                'original_path': source_db_path,
+                'original_size_mb': source_size_mb
+            }
+    
     # Start timing the optimization process
     start_time = time.time()
     
@@ -337,28 +349,21 @@ def optimize_database_file(source_db_path, size_threshold_mb=100):
     backup_path = source_path.parent / f"{source_path.stem}_backup{source_path.suffix}"
     shutil.copy2(source_db_path, backup_path)
     
-    # Connect to source database
-    source_conn = duckdb.connect(str(source_db_path))
-    
-    # Create new optimized database
-    optimized_conn = duckdb.connect(str(optimized_path))
-    
     try:
-        # Get list of tables from source
-        tables = source_conn.execute("SHOW TABLES").fetchall()
+        # Simplest approach: just make a direct copy of the file
+        shutil.copy2(source_db_path, optimized_path)
+        
+        # Open the new copy and add indexes
+        conn = duckdb.connect(str(optimized_path))
+        
+        # Get list of tables
+        tables = conn.execute("SHOW TABLES").fetchall()
         table_names = [table[0] for table in tables]
         
-        # Create each table in optimized database with compression
+        # Add indexes to each table
         for table in table_names:
-            # Export table with compression
-            optimized_conn.execute(f"""
-                CREATE TABLE {table} AS 
-                SELECT * FROM '{str(source_db_path)}'.{table}
-                WITH (compression = 'zstd')
-            """)
-            
-            # Extract column names for indexing (limited to certain common types)
-            columns = source_conn.execute(f"PRAGMA table_info('{table}')").fetchall()
+            # Get column information
+            columns = conn.execute(f"PRAGMA table_info('{table}')").fetchall()
             indexable_columns = []
             
             for col in columns:
@@ -368,19 +373,26 @@ def optimize_database_file(source_db_path, size_threshold_mb=100):
                 # Select columns that are good candidates for indexing
                 if any(type_name in col_type for type_name in ['int', 'bigint', 'date', 'timestamp']) or \
                    (('char' in col_type or 'varchar' in col_type) and col_name.lower() in 
-                    ['id', 'name', 'key', 'code', 'type', 'status', 'extension']):
+                     ['id', 'name', 'key', 'code', 'type', 'status', 'extension']):
                     indexable_columns.append(col_name)
             
             # Create indexes on appropriate columns (limit to 5 per table)
             for col_name in indexable_columns[:5]:
-                optimized_conn.execute(f"CREATE INDEX idx_{table}_{col_name} ON {table}({col_name})")
+                try:
+                    conn.execute(f"CREATE INDEX idx_{table}_{col_name} ON {table}({col_name})")
+                except Exception as e:
+                    print(f"Warning: Could not create index on {table}.{col_name}: {e}")
         
         # Analyze tables for optimal statistics
         for table in table_names:
-            optimized_conn.execute(f"ANALYZE {table}")
+            try:
+                conn.execute(f"ANALYZE {table}")
+            except Exception as e:
+                print(f"Warning: Could not analyze table {table}: {e}")
         
         # Force checkpoint to flush optimizations to disk
-        optimized_conn.execute("CHECKPOINT")
+        conn.execute("CHECKPOINT")
+        conn.close()
         
         # Get size of optimized database
         optimized_size_bytes = os.path.getsize(str(optimized_path))
@@ -403,7 +415,7 @@ def optimize_database_file(source_db_path, size_threshold_mb=100):
             'size_reduction_mb': size_reduction_mb,
             'size_reduction_percent': size_reduction_percent
         }
-        
+            
     except Exception as e:
         # Handle any errors during optimization
         return {
@@ -412,10 +424,6 @@ def optimize_database_file(source_db_path, size_threshold_mb=100):
             'original_path': source_db_path,
             'original_size_mb': source_size_mb
         }
-    finally:
-        # Close connections
-        source_conn.close()
-        optimized_conn.close()
 
 
 def render_scale_info(db):
